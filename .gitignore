@@ -1,0 +1,5 @@
+node_modules
+dist
+# superseded first export; current screenshots live in screenshots/taglish and screenshots/english
+screenshots/*.png
+.claude/

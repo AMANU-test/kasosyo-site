@@ -1,0 +1,18 @@
+[
+  { "id": "A", "label": "A · Landing", "path": "/", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "B", "label": "B · Unang Hakbang hub", "path": "/hakbang", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "C1", "label": "C · Lesson: video", "path": "/hakbang/lesson/scam?card=0", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "C2", "label": "C · Lesson: picture cards", "path": "/hakbang/lesson/scam?card=1", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "C3", "label": "C · Lesson: quiz", "path": "/hakbang/lesson/scam?card=2", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "D1", "label": "D · Sumali 1: Kilalanin (PMES)", "path": "/sumali?step=1", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "D2", "label": "D · Sumali 2: Ikaw", "path": "/sumali?step=2", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "D3", "label": "D · Sumali 3: Mga kasunduan", "path": "/sumali?step=3", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "D4", "label": "D · Sumali 4: Bayad", "path": "/sumali?step=4", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "D5", "label": "D · Done", "path": "/sumali/done", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "E", "label": "E · Unang JVS", "path": "/invest?goal=near", "group": "Phase 1 · Matuto at sumali" },
+  { "id": "F", "label": "F · Home", "path": "/app", "group": "Phase 2 · Investor dashboard" },
+  { "id": "G", "label": "G · Kwento", "path": "/app/kwento", "group": "Phase 2 · Investor dashboard" },
+  { "id": "H", "label": "H · Maturity", "path": "/app/maturity", "group": "Phase 2 · Investor dashboard" },
+  { "id": "I", "label": "I · Messenger follow-ups", "path": "/nudges", "group": "Messenger at deck" },
+  { "id": "J", "label": "J · Ngayon vs. Unang Hakbang", "path": "/compare", "group": "Messenger at deck" }
+]

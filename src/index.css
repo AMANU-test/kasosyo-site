@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/*
+  Brand tokens, sampled from SEDPI / Usapang Pera material: coral #EE474E,
+  teal #31838E, yellow #FFCE42. "-strong" shades are slightly deeper so white
+  text on them passes WCAG AA (4.5:1). Every screen reads from these variables.
+*/
+@theme {
+  --color-coral: #ee474e;         /* SEDPI coral: brand surfaces, decoration */
+  --color-coral-strong: #d6363d;  /* buttons with white text (4.7:1) */
+  --color-coral-soft: #fde5e4;
+  --color-teal: #2a7680;          /* SEDPI teal, deepened: structure, links, cards (5.3:1 with white) */
+  --color-teal-brand: #31838e;    /* exact SEDPI teal, for large shapes only */
+  --color-teal-deep: #1f5d66;
+  --color-teal-tint: #dceef0;
+  --color-teal-soft: #eef7f8;
+  --color-mangga: #ffce42;        /* SEDPI yellow (use with ink text, 10:1) */
+  --color-mangga-soft: #fff4d1;
+  --color-paper: #f8f6f1;         /* warm off-white background */
+  --color-card: #ffffff;
+  --color-ink: #17282b;           /* body text */
+  --color-muted: #4f5e61;         /* secondary text, 6.3:1 on paper */
+  --color-line: #e2e2dc;
+  --color-placeholder: #e7e6e1;
+
+  /* SEXY letters, borrowed from the four colours in SEDPI's mark */
+  --color-sexy-s: #1f6670;        /* Secure: teal */
+  --color-sexy-e: #6a4c9c;        /* Encashable: purple */
+  --color-sexy-x: #b8571b;        /* X-factor: orange */
+  --color-sexy-y: #c9343b;        /* Yield: coral-red */
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-stone: 46% 54% 44% 56% / 56% 46% 54% 44%;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: #efece5;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-mangga);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.stone { border-radius: var(--radius-stone); }
+
+.snap-row { scroll-snap-type: x mandatory; scrollbar-width: none; }
+.snap-row::-webkit-scrollbar { display: none; }
+.snap-row > * { scroll-snap-align: center; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .35s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
