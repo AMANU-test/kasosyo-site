@@ -43,7 +43,7 @@ export default function Hakbang() {
       <section className="px-4 pt-6">
         <Eyebrow className="px-1">{t('Lesson ngayong araw', "Today's lesson")}</Eyebrow>
         <Link to={`/hakbang/lesson/${today.id}`} className="mt-2 block overflow-hidden rounded-3xl bg-teal text-white">
-          <Photo slot="usapang-pera" className="h-36">
+          <Photo slot="vince-forum" className="h-36">
             <span className="absolute inset-0 bg-gradient-to-t from-teal via-transparent to-transparent" />
             <span className="absolute bottom-3 left-4 rounded-full bg-mangga px-2.5 py-1 text-[11.5px] font-bold text-ink">{today.minutes} min · {t('may video', 'with video')}</span>
           </Photo>
@@ -118,7 +118,7 @@ export default function Hakbang() {
 
       <section className="px-4 pb-8 pt-4">
         <Link to="/sumali" className="flex items-center gap-3 rounded-2xl border border-line bg-card p-4">
-          <Photo slot="members-group" compact className="size-14 shrink-0 rounded-2xl" />
+          <Photo slot="sedpi-community" compact className="size-14 shrink-0 rounded-2xl" />
           <div className="flex-1">
             <p className="text-[15px] font-semibold">{t('Handa ka nang sumali?', 'Ready to join?')}</p>
             <p className="text-[13px] text-muted">{t('Pwede kahit hindi pa tapos ang lahat ng lesson.', "You can, even if you haven't finished every lesson.")}</p>

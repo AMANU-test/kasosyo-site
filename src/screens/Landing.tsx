@@ -46,9 +46,9 @@ export default function Landing() {
   ]
 
   const gallery: { slot: PhotoSlot; caption: string }[] = [
-    { slot: 'members-group', caption: t('Mga KaSosyo member', 'KaSosyo members') },
-    { slot: 'kanegosyo-branch', caption: 'KaNegosyo partners' },
-    { slot: 'usapang-pera', caption: 'Usapang Pera' },
+    { slot: 'sedpi-community', caption: t('Ika-20 anibersaryo ng SEDPI', "SEDPI's 20th anniversary") },
+    { slot: 'kanegosyo-team', caption: t('Ang KaNegosyo team', 'The KaNegosyo team') },
+    { slot: 'sedpi-leaders', caption: t('Si Sir Vince at ang SEDPI leaders', 'Sir Vince and SEDPI leaders') },
     { slot: 'sedpi-team', caption: t('Ang SEDPI team', 'The SEDPI team') },
   ]
 
@@ -140,7 +140,9 @@ export default function Landing() {
           </article>
 
           <article className="overflow-hidden rounded-3xl border border-line bg-card">
-            <Photo slot="kanegosyo-store" className="h-40" />
+            <Photo slot="kanegosyo-branch" className="h-40">
+              <span className="absolute bottom-2 left-2 rounded-full bg-ink/70 px-2.5 py-1 text-[11.5px] font-semibold text-white">{t('KaNegosyo branch sa Maco, Davao', 'KaNegosyo branch in Maco, Davao')}</span>
+            </Photo>
             <div className="p-4">
               <h3 className="text-[18px] font-bold">{t('Saan napupunta ang pera ko?', 'Where does my money go?')}</h3>
               <p className="mt-1 text-[14.5px] leading-relaxed text-muted">
@@ -221,6 +223,10 @@ export default function Landing() {
       </section>
 
       <footer className="px-5 pb-6 text-[12px] leading-relaxed text-muted">
+        <p className="mb-2 flex items-center gap-2 text-[12px] font-semibold">
+          {t('Isang programa ng', 'A program of')}
+          <img src={`${import.meta.env.BASE_URL}photos/sedpi-logo.png`} alt="SEDPI" className="h-7 w-auto" loading="lazy" />
+        </p>
         {t(
           'SEDPI Coop · CDA Reg. No. 9520-101300032122 · Rehistrado July 21, 2021, Quezon City · Saklaw ng Philippine Cooperative Code of 2008.',
           'SEDPI Coop · CDA Reg. No. 9520-101300032122 · Registered July 21, 2021, Quezon City · Governed by the Philippine Cooperative Code of 2008.',

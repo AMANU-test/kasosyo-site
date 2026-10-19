@@ -12,12 +12,12 @@ export const chapters: { title: Txt; summary: Txt; min: string; icon: typeof Sto
   {
     title: { tl: 'Ano ang makukuha mo bilang member', en: 'What you get as a member' },
     summary: { tl: 'Co-owner ka ng co-op, at pwede ka nang mag-invest sa JVS.', en: "You become a co-owner of the co-op, and you can invest in a JVS." },
-    min: '1:30', icon: BadgeCheck, tint: 'bg-mangga-soft', fg: 'text-sexy-x', photo: 'members-group',
+    min: '1:30', icon: BadgeCheck, tint: 'bg-mangga-soft', fg: 'text-sexy-x', photo: 'sedpi-community',
   },
   {
     title: { tl: 'Paano ginagamit ang pera mo', en: 'How your money is used' },
     summary: { tl: 'Pinagsasama ang ipon; ang pool ang sumusuporta sa KaNegosyo partners.', en: 'Savings are pooled; the pool supports KaNegosyo partners.' },
-    min: '2:00', icon: Store, tint: 'bg-[#f7e2d2]', fg: 'text-sexy-x', photo: 'kanegosyo-store',
+    min: '2:00', icon: Store, tint: 'bg-[#f7e2d2]', fg: 'text-sexy-x', photo: 'kanegosyo-branch',
   },
   {
     title: { tl: 'Ligtas ba?', en: 'Is it safe?' },

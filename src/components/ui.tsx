@@ -87,6 +87,7 @@ export function Photo({ slot, className = '', children, compact, quiet }: { slot
           decoding="async"
           onLoad={() => setOk(true)}
           onError={() => setOk(false)}
+          style={{ objectPosition: p.pos }}
           className={`absolute inset-0 size-full object-cover ${ok ? '' : 'opacity-0'}`}
         />
       )}
@@ -94,7 +95,7 @@ export function Photo({ slot, className = '', children, compact, quiet }: { slot
         <div className="absolute inset-0 grid place-items-center bg-[repeating-linear-gradient(135deg,transparent_0_10px,rgba(0,0,0,.025)_10px_20px)] p-2 text-center">
           <span className="flex flex-col items-center gap-1 text-muted">
             <ImageIcon size={compact ? 16 : 20} aria-hidden />
-            {!compact && <span className="text-[11.5px] font-semibold leading-tight">[{t('Photo mula sa sedpi.com', 'Photo from sedpi.com')}]</span>}
+            {!compact && <span className="text-[11.5px] font-semibold leading-tight">[{t('Kailangan ng photo', 'Photo needed')}]</span>}
             <span className={`leading-tight ${compact ? 'text-[9.5px]' : 'text-[11px]'}`}>{p.hint}</span>
           </span>
         </div>
@@ -283,7 +284,7 @@ export function ChatFab({ bottom = 92 }: { bottom?: number }) {
       </button>
       <Sheet open={open} onClose={() => setOpen(false)} title={t('Si Zion ang sasagot', 'Zion will answer you')}>
         <div className="flex gap-3">
-          <Photo slot="sedpi-team" compact className="size-16 shrink-0 rounded-full" />
+          <Photo slot="zion" compact className="size-16 shrink-0 rounded-full" />
           <p className="text-[15px] leading-relaxed text-muted">
             {t(
               'Si Zion ang member-relations officer ng SEDPI Coop. Tao siya, hindi bot. Itanong mo kahit ano: tungkol sa co-op, sa bayad, o kung para sa iyo ba ito.',

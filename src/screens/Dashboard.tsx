@@ -123,7 +123,7 @@ export function AppHome() {
 
       <section className="px-4 pb-8 pt-6">
         <Link to="/app/kwento" className="block overflow-hidden rounded-3xl bg-teal text-white">
-          <Photo slot="kanegosyo-store" className="h-36" />
+          <Photo slot="kanegosyo-branch" className="h-36" />
           <div className="p-4">
             <Eyebrow className="text-white/70">{t('Kwento', 'Stories')}</Eyebrow>
             <p className="mt-1 text-[14.5px] font-semibold leading-snug">
@@ -159,7 +159,7 @@ export function Kwento() {
       </section>
 
       <section className="mx-4 mt-4 overflow-hidden rounded-3xl bg-teal text-white">
-        <Photo slot="kanegosyo-branch" className="h-32" />
+        <Photo slot="branch-opening" className="h-36" />
         <div className="p-5">
           <Eyebrow className="text-white/70">{t('Ngayong quarter · buong pool', 'This quarter · whole pool')}</Eyebrow>
           <div className="mt-3 grid grid-cols-2 gap-3">
