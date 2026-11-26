@@ -8,10 +8,7 @@ export function MoneyFlow() {
   return (
     <svg viewBox="0 0 358 250" className="h-auto w-full" role="img" aria-labelledby="flow-title">
       <title id="flow-title">
-        {t(
-          'Ang ipon mo ay sumasama sa KaSosyo pool. Ang pool ang sumusuporta sa mga nano-negosyo. Bumabalik sa iyo ang dividends, at lumalago ang komunidad.',
-          'Your savings join the KaSosyo pool. The pool supports nano-businesses. Dividends come back to you, and the community grows.',
-        )}
+        {t('moneyFlow.your_savings_join_the_kasosyo_pool')}
       </title>
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -29,7 +26,7 @@ export function MoneyFlow() {
       {/* Ikaw */}
       <circle cx={52} cy={80} r={38} fill="var(--color-teal-tint)" />
       <Wallet x={36} y={64} width={32} height={32} color="var(--color-teal)" strokeWidth={1.75} />
-      <text x={52} y={138} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--color-ink)">{t('Ikaw', 'You')}</text>
+      <text x={52} y={138} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--color-ink)">{t('moneyFlow.you')}</text>
 
       {/* Pool */}
       <circle cx={179} cy={80} r={50} fill="var(--color-teal)" />
@@ -43,21 +40,21 @@ export function MoneyFlow() {
       {coin(186, 116, 'var(--color-sexy-s)')}
       {coin(143, 110, 'var(--color-mangga)')}
       <text x={179} y={150} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--color-ink)">KaSosyo pool</text>
-      <text x={179} y={165} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('pinagsama-samang ipon', 'pooled savings')}</text>
+      <text x={179} y={165} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('moneyFlow.pooled_savings')}</text>
 
       {/* Nano-negosyo */}
       <circle cx={306} cy={80} r={38} fill="var(--color-mangga-soft)" />
       <Store x={290} y={64} width={32} height={32} color="var(--color-sexy-x)" strokeWidth={1.75} />
       <circle cx={334} cy={50} r={14} fill="var(--color-teal-tint)" stroke="#fff" strokeWidth={2} />
       <Sprout x={325} y={41} width={18} height={18} color="var(--color-teal)" strokeWidth={2} />
-      <text x={306} y={138} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--color-ink)">{t('Nano-negosyo', 'Nano-business')}</text>
-      <text x={306} y={153} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('+ epekto sa', '+ impact on the')}</text>
-      <text x={306} y={166} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('komunidad', 'community')}</text>
+      <text x={306} y={138} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--color-ink)">{t('moneyFlow.nano_business')}</text>
+      <text x={306} y={153} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('moneyFlow.impact_on_the')}</text>
+      <text x={306} y={166} textAnchor="middle" fontSize={11} fill="var(--color-muted)">{t('moneyFlow.community')}</text>
 
       {/* return chip */}
       <rect x={104} y={208} width={150} height={34} rx={17} fill="var(--color-mangga)" />
       <Coins x={116} y={216} width={18} height={18} color="var(--color-ink)" strokeWidth={2} />
-      <text x={140} y={230} fontSize={12.5} fontWeight={700} fill="var(--color-ink)">{t('Dividends sa iyo', 'Dividends to you')}</text>
+      <text x={140} y={230} fontSize={12.5} fontWeight={700} fill="var(--color-ink)">{t('moneyFlow.dividends_to_you')}</text>
     </svg>
   )
 }

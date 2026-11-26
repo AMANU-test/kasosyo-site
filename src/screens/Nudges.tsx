@@ -39,40 +39,40 @@ export default function Nudges() {
   return (
     <Screen className="bg-[#eef1ec]">
       <header className="sticky top-0 z-10 flex h-16 items-center gap-2 border-b border-line bg-paper px-2">
-        <Link to="/" aria-label={t('Bumalik', 'Back')} className="grid size-11 place-items-center"><ChevronLeft size={22} /></Link>
+        <Link to="/" aria-label={t('nudges.back')} className="grid size-11 place-items-center"><ChevronLeft size={22} /></Link>
         <span className="stone grid size-10 place-items-center bg-teal font-display font-bold text-white">K</span>
         <div className="flex-1">
           <p className="text-[15px] font-semibold leading-tight">SEDPI KaSosyo</p>
-          <p className="text-[12px] text-muted">{t('Mga paalala lang · pwedeng i-off', 'Reminders only · you can turn these off')}</p>
+          <p className="text-[12px] text-muted">{t('nudges.reminders_only_you_can_turn_these')}</p>
         </div>
         <LangToggle className="mr-1" />
       </header>
 
       <div className="flex-1 space-y-2 px-3 pb-6">
-        <Day>{t('Lunes', 'Monday')}, 7:30 PM</Day>
-        <Bot>{t('Hi Bea! Nasa Step 2 ka na ng pagsali sa KaSosyo. Ituloy natin? Mga 5 minuto na lang.', "Hi Bea! You're on Step 2 of joining KaSosyo. Want to continue? About 5 minutes to go.")}</Bot>
-        <Replies items={[t('Oo, ituloy', 'Yes, continue'), t('Hindi pa', 'Not yet'), t('May tanong ako', 'I have a question')]} />
-        <Me>{t('Oo, ituloy', 'Yes, continue')}</Me>
-        <Bot>{t('Sige! Dito ka ulit magsisimula:', 'Great! Pick up where you left off:')} <Link to="/sumali?step=2" className="font-semibold text-teal underline">sedpi.com/kasosyo/sumali</Link></Bot>
+        <Day>{t('nudges.monday')}, 7:30 PM</Day>
+        <Bot>{t('nudges.hi_bea_youre_on_step_2')}</Bot>
+        <Replies items={[t('nudges.yes_continue'), t('nudges.not_yet'), t('nudges.i_have_a_question')]} />
+        <Me>{t('nudges.yes_continue')}</Me>
+        <Bot>{t('nudges.great_pick_up_where_you_left')} <Link to="/sumali?step=2" className="font-semibold text-teal underline">sedpi.com/kasosyo/sumali</Link></Bot>
 
-        <Day>{t('Huwebes', 'Thursday')}, 10:12 AM</Day>
-        <Bot>{t('Natanggap na namin ang ₱1,100 mo. Salamat, Bea! Sa loob ng 3 araw, darating sa email mo ang PMES certificate at ang login mo sa KaSosyo Online.', 'We received your ₱1,100. Thank you, Bea! Within 3 days, your PMES certificate and KaSosyo Online login will arrive by email.')}</Bot>
-        <Replies items={[t('Salamat', 'Thanks'), t('May tanong ako', 'I have a question')]} />
+        <Day>{t('nudges.thursday')}, 10:12 AM</Day>
+        <Bot>{t('nudges.we_received_your_1_100_thank')}</Bot>
+        <Replies items={[t('nudges.thanks'), t('nudges.i_have_a_question')]} />
 
-        <Day>[{t('Petsa ng maturity', 'Maturity date')}]</Day>
+        <Day>[{t('nudges.maturity_date')}]</Day>
         <Bot>
-          {t('Gising na ang pera mo! Natapos na ang term ng JVS mo. Ikaw ang pipili: ituloy, dagdagan, o i-withdraw.', 'Your money is awake! Your JVS term has ended. You choose: continue, top up, or withdraw.')}
+          {t('nudges.your_money_is_awake_your_jvs')}
           <Link to="/app/maturity" className="mt-2.5 flex items-center gap-2.5 rounded-2xl bg-mangga-soft p-2.5 text-ink">
             <span className="stone grid size-9 shrink-0 place-items-center bg-mangga"><Sun size={17} /></span>
-            <span className="flex-1 text-[13px] font-semibold leading-tight">{t('Tingnan ang mga pagpipilian', 'See your options')}<span className="block font-normal text-muted">sedpi.com/kasosyo</span></span>
+            <span className="flex-1 text-[13px] font-semibold leading-tight">{t('nudges.see_your_options')}<span className="block font-normal text-muted">sedpi.com/kasosyo</span></span>
             <ChevronRight size={17} />
           </Link>
         </Bot>
-        <Replies items={[t('Titingnan ko', "I'll take a look"), t('Paalalahanan ako bukas', 'Remind me tomorrow'), t('May tanong ako', 'I have a question')]} />
+        <Replies items={[t('nudges.ill_take_a_look'), t('nudges.remind_me_tomorrow'), t('nudges.i_have_a_question')]} />
       </div>
 
       <div className="sticky bottom-0 flex items-center gap-2 border-t border-line bg-paper px-3 py-2.5">
-        <div className="flex h-11 flex-1 items-center rounded-full bg-white px-4 text-[14px] text-muted">{t('Mag-type ng mensahe…', 'Type a message…')}</div>
+        <div className="flex h-11 flex-1 items-center rounded-full bg-white px-4 text-[14px] text-muted">{t('nudges.type_a_message')}</div>
         <span className="grid size-11 place-items-center rounded-full bg-teal text-white"><Send size={18} /></span>
       </div>
     </Screen>

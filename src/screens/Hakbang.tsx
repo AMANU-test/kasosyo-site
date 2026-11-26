@@ -8,7 +8,7 @@ import { peso, useDemo, useT } from '../state'
 export default function Hakbang() {
   const { state } = useDemo()
   const { t, tx } = useT()
-  const steps = [t('Matuto', 'Learn'), t('Mag-set ng goal', 'Set a goal'), t('Sumali', 'Join'), t('Unang invest', 'First invest'), t('Kwento', 'Stories')]
+  const steps = [t('hakbang.learn'), t('hakbang.set_a_goal'), t('hakbang.join'), t('hakbang.first_invest'), t('hakbang.stories')]
   const done = [
     state.lessonsDone.length === lessons.length,
     state.goal.amount > 0,
@@ -24,7 +24,7 @@ export default function Hakbang() {
     <Screen>
       <TopBar
         right={
-          <Link to="/app" className="mr-1 flex h-11 items-center gap-2 rounded-full pl-1 pr-3 text-[14px] font-semibold" aria-label={t('Account ni Bea', "Bea's account")}>
+          <Link to="/app" className="mr-1 flex h-11 items-center gap-2 rounded-full pl-1 pr-3 text-[14px] font-semibold" aria-label={t('hakbang.beas_account')}>
             <span className="grid size-8 place-items-center rounded-full bg-mangga font-display text-[14px] font-bold">B</span>
           </Link>
         }
@@ -32,7 +32,7 @@ export default function Hakbang() {
 
       <section className="px-5 pt-5">
         <Eyebrow>Unang Hakbang</Eyebrow>
-        <h1 className="mt-1 text-[28px] font-extrabold leading-tight">{t('Hi Bea. Isang hakbang lang ngayon.', 'Hi Bea. Just one step today.')}</h1>
+        <h1 className="mt-1 text-[28px] font-extrabold leading-tight">{t('hakbang.hi_bea_just_one_step_today')}</h1>
       </section>
 
       <section className="mx-4 mt-5 rounded-3xl border border-line bg-card px-2 pb-4 pt-5">
@@ -41,11 +41,11 @@ export default function Hakbang() {
 
       {/* Today's lesson */}
       <section className="px-4 pt-6">
-        <Eyebrow className="px-1">{t('Lesson ngayong araw', "Today's lesson")}</Eyebrow>
+        <Eyebrow className="px-1">{t('hakbang.todays_lesson')}</Eyebrow>
         <Link to={`/hakbang/lesson/${today.id}`} className="mt-2 block overflow-hidden rounded-3xl bg-teal text-white">
           <Photo slot="vince-forum" className="h-36">
             <span className="absolute inset-0 bg-gradient-to-t from-teal via-transparent to-transparent" />
-            <span className="absolute bottom-3 left-4 rounded-full bg-mangga px-2.5 py-1 text-[11.5px] font-bold text-ink">{today.minutes} min · {t('may video', 'with video')}</span>
+            <span className="absolute bottom-3 left-4 rounded-full bg-mangga px-2.5 py-1 text-[11.5px] font-bold text-ink">{today.minutes} min · {t('hakbang.with_video')}</span>
           </Photo>
           <div className="flex items-start gap-3 p-5 pt-3">
             <SexyBadge letter={today.letter} size="lg" />
@@ -56,7 +56,7 @@ export default function Hakbang() {
             </div>
           </div>
           <div className="flex items-center justify-between bg-teal-deep px-5 py-3">
-            <span className="text-[13.5px] text-white/85">{t('Gawin na', 'Do it')}: {tx(today.action.label)}</span>
+            <span className="text-[13.5px] text-white/85">{t('hakbang.do_it')}: {tx(today.action.label)}</span>
             <span className="grid size-10 place-items-center rounded-full bg-mangga text-ink"><Play size={18} fill="currentColor" /></span>
           </div>
         </Link>
@@ -65,10 +65,10 @@ export default function Hakbang() {
       {/* All lessons, in SEXY order */}
       <section className="px-4 pt-7">
         <div className="flex items-baseline justify-between px-1">
-          <h2 className="text-[20px] font-bold">{t('Mga lesson, ayon sa SEXY', 'Lessons, in SEXY order')}</h2>
+          <h2 className="text-[20px] font-bold">{t('hakbang.lessons_in_sexy_order')}</h2>
           <span className="text-[13px] text-muted">{state.lessonsDone.length}/{lessons.length}</span>
         </div>
-        <p className="mt-1 px-1 text-[13.5px] leading-snug text-muted">{t('Ligtas muna, saka makukuha, saka epekto. Ang kita, huli.', 'Safety first, then access, then impact. Returns come last.')}</p>
+        <p className="mt-1 px-1 text-[13.5px] leading-snug text-muted">{t('hakbang.safety_first_then_access_then_impact')}</p>
         <ul className="mt-3 grid gap-2">
           {lessons.map(l => {
             const isDone = state.lessonsDone.includes(l.id)
@@ -79,10 +79,10 @@ export default function Hakbang() {
                   <div className="min-w-0 flex-1">
                     <p className={`text-[11.5px] font-bold uppercase tracking-wide ${SEXY[l.letter].text}`}>{SEXY[l.letter].word} · {t(SEXY[l.letter].fil, SEXY[l.letter].plain)}</p>
                     <p className="text-[15px] font-semibold leading-snug">{tx(l.title)}</p>
-                    <p className="text-[12.5px] text-muted">{t('Gawin na', 'Do it')}: {tx(l.action.label)}</p>
+                    <p className="text-[12.5px] text-muted">{t('hakbang.do_it')}: {tx(l.action.label)}</p>
                   </div>
                   {isDone ? (
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-teal text-white" aria-label={t('Tapos na', 'Done')}><Check size={15} strokeWidth={3} /></span>
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-teal text-white" aria-label={t('hakbang.done')}><Check size={15} strokeWidth={3} /></span>
                   ) : (
                     <ChevronRight size={20} className="shrink-0 text-muted" />
                   )}
@@ -99,7 +99,7 @@ export default function Hakbang() {
           <div className="flex items-center gap-3">
             <span className="stone grid size-11 place-items-center bg-mangga text-ink"><Target size={20} /></span>
             <div>
-              <p className="text-[12.5px] font-semibold text-muted">{t('Ang goal mo', 'Your goal')}</p>
+              <p className="text-[12.5px] font-semibold text-muted">{t('hakbang.your_goal')}</p>
               <p className="font-display text-[19px] font-bold">{state.goal.label} · {peso(state.goal.amount)}</p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function Hakbang() {
               <span key={i} className={`h-2.5 flex-1 rounded-full ${i < state.streakWeeks ? 'bg-teal' : 'bg-white'}`} />
             ))}
           </div>
-          <p className="mt-3 text-[12.5px] leading-snug text-muted">{t('Ang habit lang ang binibilang namin, hindi kung magkano. Walang ranking dito.', "We only count the habit, not the amount. There's no ranking here.")}</p>
+          <p className="mt-3 text-[12.5px] leading-snug text-muted">{t('hakbang.we_only_count_the_habit_not')}</p>
         </Card>
       </section>
 
@@ -120,15 +120,15 @@ export default function Hakbang() {
         <Link to="/sumali" className="flex items-center gap-3 rounded-2xl border border-line bg-card p-4">
           <Photo slot="sedpi-community" compact className="size-14 shrink-0 rounded-2xl" />
           <div className="flex-1">
-            <p className="text-[15px] font-semibold">{t('Handa ka nang sumali?', 'Ready to join?')}</p>
-            <p className="text-[13px] text-muted">{t('Pwede kahit hindi pa tapos ang lahat ng lesson.', "You can, even if you haven't finished every lesson.")}</p>
+            <p className="text-[15px] font-semibold">{t('hakbang.ready_to_join')}</p>
+            <p className="text-[13px] text-muted">{t('hakbang.you_can_even_if_you_havent')}</p>
           </div>
           <ChevronRight size={20} className="text-muted" />
         </Link>
       </section>
 
       <StickyBar>
-        <LinkButton to={`/hakbang/lesson/${today.id}`} full>{t('Simulan ang lesson ngayong araw', "Start today's lesson")} <ArrowRight size={18} /></LinkButton>
+        <LinkButton to={`/hakbang/lesson/${today.id}`} full>{t('hakbang.start_todays_lesson')} <ArrowRight size={18} /></LinkButton>
       </StickyBar>
     </Screen>
   )

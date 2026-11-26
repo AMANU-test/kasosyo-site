@@ -15,14 +15,14 @@ export default function Lesson() {
   const [actionOpen, setActionOpen] = useState(false)
   const { t, tx } = useT()
   if (!lesson) return <Navigate to="/hakbang" replace />
-  const labels = [t('Panoorin', 'Watch'), t('Tingnan', 'Look'), t('Subukan', 'Try')]
+  const labels = [t('lesson.watch'), t('lesson.look'), t('lesson.try')]
 
   return (
     <Screen>
       <TopBar back="/hakbang" title={<span className="flex items-center gap-2"><SexyBadge letter={lesson.letter} size="sm" />{tx(lesson.title)}</span>} />
 
       {/* Story-style progress */}
-      <div className="flex gap-1.5 px-4 pt-3" role="tablist" aria-label={t('Bahagi ng lesson', 'Lesson parts')}>
+      <div className="flex gap-1.5 px-4 pt-3" role="tablist" aria-label={t('lesson.lesson_parts')}>
         {labels.map((l, i) => (
           <button key={l} role="tab" aria-selected={card === i} onClick={() => setCard(i)} className="flex min-h-11 flex-1 flex-col justify-center gap-1.5">
             <span className={`h-1.5 w-full rounded-full ${i <= card ? 'bg-teal' : 'bg-line'}`} />
@@ -41,10 +41,10 @@ export default function Lesson() {
         <div className="flex gap-2">
           {card < 2 && (
             <Button variant="secondary" onClick={() => setCard(card + 1)} className="shrink-0">
-              {t('Susunod', 'Next')} <ArrowRight size={17} />
+              {t('lesson.next')} <ArrowRight size={17} />
             </Button>
           )}
-          <Button full onClick={() => setActionOpen(true)}>{t('Gawin na', 'Do it now')}</Button>
+          <Button full onClick={() => setActionOpen(true)}>{t('lesson.do_it_now')}</Button>
         </div>
       </StickyBar>
 
@@ -58,8 +58,8 @@ function VideoCard({ lesson, onSkip }: { lesson: LessonT; onSkip: () => void }) 
   return (
     <div>
       <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-[#1d2f2a]">
-        <div className="absolute inset-x-0 bottom-8 text-center text-[12px] text-white/60">[{t('Video placeholder · hanggang 3 min', 'Video placeholder · up to 3 min')}]</div>
-        <button aria-label={t('I-play ang video', 'Play video')} className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-mangga text-ink shadow-lg">
+        <div className="absolute inset-x-0 bottom-8 text-center text-[12px] text-white/60">[{t('lesson.video_placeholder_up_to_3_min')}]</div>
+        <button aria-label={t('lesson.play_video')} className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-mangga text-ink shadow-lg">
           <Play size={26} fill="currentColor" />
         </button>
         <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-3">
@@ -74,7 +74,7 @@ function VideoCard({ lesson, onSkip }: { lesson: LessonT; onSkip: () => void }) 
       <h1 className="mt-4 text-[22px] font-bold leading-snug">{tx(lesson.title)}</h1>
       <p className="mt-1 text-[14.5px] leading-relaxed text-muted">{tx(lesson.summary)}</p>
       <button onClick={onSkip} className="mt-2 min-h-11 text-[14px] font-semibold text-teal underline underline-offset-4">
-        {t('Hindi makapanood ngayon? Tingnan ang picture cards', "Can't watch right now? See the picture cards")}
+        {t('lesson.cant_watch_right_now_see_the')}
       </button>
     </div>
   )
@@ -85,7 +85,7 @@ function PictureCards({ lesson }: { lesson: LessonT }) {
   const { t, tx } = useT()
   return (
     <div>
-      <p className="text-[13.5px] text-muted">{t('I-swipe para makita ang buong idea, kahit walang video.', 'Swipe to see the whole idea, no video needed.')}</p>
+      <p className="text-[13.5px] text-muted">{t('lesson.swipe_to_see_the_whole_idea')}</p>
       <div
         className="snap-row -mx-4 mt-3 flex gap-3 overflow-x-auto px-4 pb-2"
         onScroll={e => {
@@ -118,7 +118,7 @@ function Quiz({ lesson }: { lesson: LessonT }) {
   const right = picked === q.correct
   return (
     <div>
-      <p className="text-[12.5px] font-semibold uppercase tracking-wide text-muted">{t('Isang tanong lang', 'Just one question')}</p>
+      <p className="text-[12.5px] font-semibold uppercase tracking-wide text-muted">{t('lesson.just_one_question')}</p>
       <h2 className="mt-1 text-[21px] font-bold leading-snug">{tx(q.q)}</h2>
       <div className="mt-4 grid gap-2" role="radiogroup">
         {q.options.map((o, n) => {
@@ -147,10 +147,10 @@ function Quiz({ lesson }: { lesson: LessonT }) {
           <p className="text-[15px] font-semibold leading-snug">{tx(right ? q.right : q.wrong)}</p>
           {!right && (
             <button onClick={() => setPicked(null)} className="mt-2 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-semibold text-teal underline underline-offset-4">
-              <RotateCcw size={15} /> {t('Subukan ulit', 'Try again')}
+              <RotateCcw size={15} /> {t('lesson.try_again')}
             </button>
           )}
-          {right && <p className="mt-1 text-[13.5px] text-white/85">{t('Ngayon, isang maliit na totoong hakbang: pindutin ang Gawin na.', 'Now one small real step: tap Do it now.')}</p>}
+          {right && <p className="mt-1 text-[13.5px] text-white/85">{t('lesson.now_one_small_real_step_tap')}</p>}
         </div>
       )}
     </div>
@@ -173,19 +173,19 @@ function ActionSheet({ lesson, open, onClose }: { lesson: LessonT; open: boolean
   const close = () => { setFinished(false); onClose() }
 
   return (
-    <Sheet open={open} onClose={close} title={finished ? t('Nagawa mo!', 'You did it!') : tx(lesson.action.label)}>
+    <Sheet open={open} onClose={close} title={finished ? t('lesson.you_did_it') : tx(lesson.action.label)}>
       {finished ? (
         <div className="text-center">
           <span className="stone mx-auto grid size-20 place-items-center bg-teal text-white"><BadgeCheck size={36} /></span>
           <p className="mt-3 text-[16px] font-semibold">{t(`Tapos na ang lesson na "${lesson.title.tl}".`, `You finished "${lesson.title.en}".`)}</p>
-          <p className="mt-1 text-[14px] text-muted">{t('Nadagdag ang badge na', 'You earned the')} <b>{lesson.letter}</b> {t('sa Unang Hakbang mo.', 'badge in your first steps.')}</p>
+          <p className="mt-1 text-[14px] text-muted">{t('lesson.you_earned_the')} <b>{lesson.letter}</b> {t('lesson.badge_in_your_first_steps')}</p>
           <div className="mt-5 grid gap-2">
             {next ? (
-              <Button full onClick={() => { close(); nav(`/hakbang/lesson/${next.id}`) }}>{t('Susunod', 'Next')}: {tx(next.title)}</Button>
+              <Button full onClick={() => { close(); nav(`/hakbang/lesson/${next.id}`) }}>{t('lesson.next')}: {tx(next.title)}</Button>
             ) : (
-              <Button full onClick={() => { close(); nav('/sumali') }}>{t('Sumali sa KaSosyo', 'Join KaSosyo')}</Button>
+              <Button full onClick={() => { close(); nav('/sumali') }}>{t('lesson.join_kasosyo')}</Button>
             )}
-            <Button full variant="ghost" onClick={() => { close(); nav('/hakbang') }}>{t('Balik sa Unang Hakbang', 'Back to my first steps')}</Button>
+            <Button full variant="ghost" onClick={() => { close(); nav('/hakbang') }}>{t('lesson.back_to_my_first_steps')}</Button>
           </div>
         </div>
       ) : lesson.id === 'scam' ? <ScamCheck onDone={finish} />
@@ -210,19 +210,19 @@ function ScamCheck({ onDone }: { onDone: () => void }) {
   const n = checked.filter(Boolean).length
   const { t, tx } = useT()
   const verdict =
-    n === 0 ? { msg: t('Walang red flag sa ngayon. Itanong pa rin ang rehistro bago magbayad.', 'No red flags so far. Still ask for the registration before paying.'), c: 'bg-teal-tint' }
+    n === 0 ? { msg: t('lesson.no_red_flags_so_far_still'), c: 'bg-teal-tint' }
     : n <= 2 ? { msg: t(`${n} red flag. Huminto muna at magtanong bago maglabas ng pera.`, `${n} red flag${n > 1 ? 's' : ''}. Stop and ask questions before paying anything.`), c: 'bg-mangga-soft' }
     : { msg: t(`${n} red flags. Malaki ang tsansang scam ito. Huwag ituloy.`, `${n} red flags. This is very likely a scam. Don't go ahead.`), c: 'bg-[#fbe7e5]' }
   return (
     <div>
-      <p className="text-[14.5px] text-muted">{t('Isipin ang isang offer na nakita mo kamakailan. Alin dito ang totoo tungkol dito?', 'Think of an offer you saw recently. Which of these are true about it?')}</p>
+      <p className="text-[14.5px] text-muted">{t('lesson.think_of_an_offer_you_saw')}</p>
       <div className="mt-3 grid gap-2">
         {flags.map((f, i) => (
           <Checkbox key={f.en} checked={checked[i]} onChange={v => setChecked(c => c.map((x, j) => (j === i ? v : x)))}>{tx(f)}</Checkbox>
         ))}
       </div>
       <div role="status" className={`mt-3 rounded-2xl p-3 text-[14.5px] font-semibold ${verdict.c}`}>{verdict.msg}</div>
-      <Button full className="mt-4" onClick={onDone}>{t('Tapos na ang check ko', "I'm done checking")}</Button>
+      <Button full className="mt-4" onClick={onDone}>{t('lesson.im_done_checking')}</Button>
     </div>
   )
 }
@@ -235,25 +235,25 @@ function GoalSetter({ onDone }: { onDone: () => void }) {
   const { t } = useT()
   return (
     <div>
-      <label className="block text-[14px] font-semibold" htmlFor="monthly">{t('Magkano ang gastos mo kada buwan?', 'How much do you spend a month?')}</label>
+      <label className="block text-[14px] font-semibold" htmlFor="monthly">{t('lesson.how_much_do_you_spend_a')}</label>
       <div className="mt-2 flex items-center rounded-2xl border-2 border-line bg-card px-3 focus-within:border-teal">
         <span className="text-[18px] font-semibold text-muted">₱</span>
         <input id="monthly" inputMode="numeric" value={monthly.toLocaleString('en-PH')} onChange={e => setMonthly(Number(e.target.value.replace(/\D/g, '')) || 0)} className="h-12 w-full bg-transparent px-2 text-[18px] font-semibold outline-none" />
       </div>
-      <p className="mt-4 text-[14px] font-semibold">{t('Ilang buwan ang gusto mong sandalan?', 'How many months of cushion do you want?')}</p>
+      <p className="mt-4 text-[14px] font-semibold">{t('lesson.how_many_months_of_cushion_do')}</p>
       <div className="mt-2 grid grid-cols-3 gap-2">
         {[3, 4, 6].map(m => (
           <button key={m} onClick={() => setMonths(m)} aria-pressed={months === m} className={`min-h-12 rounded-2xl border-2 text-[15px] font-semibold ${months === m ? 'border-teal bg-teal-soft text-teal' : 'border-line bg-card'}`}>
-            {m} {t('buwan', 'months')}
+            {m} {t('lesson.months')}
           </button>
         ))}
       </div>
       <div className="mt-4 rounded-2xl bg-mangga-soft p-4">
-        <p className="text-[13px] text-muted">{t('Ang emergency-fund goal mo', 'Your emergency-fund goal')}</p>
+        <p className="text-[13px] text-muted">{t('lesson.your_emergency_fund_goal')}</p>
         <p className="font-display text-[28px] font-extrabold">{peso(goal)}</p>
-        <p className="text-[13px] text-muted">{t('Unti-unti lang, tuwing sweldo. Ang habit ang mahalaga.', 'Little by little, every payday. The habit is what counts.')}</p>
+        <p className="text-[13px] text-muted">{t('lesson.little_by_little_every_payday_the')}</p>
       </div>
-      <Button full className="mt-4" disabled={goal <= 0} onClick={() => { set({ goal: { label: 'Emergency fund', amount: goal } }); onDone() }}>{t('I-save ang goal', 'Save goal')}</Button>
+      <Button full className="mt-4" disabled={goal <= 0} onClick={() => { set({ goal: { label: 'Emergency fund', amount: goal } }); onDone() }}>{t('lesson.save_goal')}</Button>
     </div>
   )
 }
@@ -273,7 +273,7 @@ function ImpactPicker({ onDone }: { onDone: () => void }) {
   const toggle = (a: string) => setPicks(p => (p.includes(a) ? p.filter(x => x !== a) : [...p, a]))
   return (
     <div>
-      <p className="text-[14.5px] text-muted">{t('Pumili ng kahit ilan. Gagamitin namin ito para ipakita sa Kwento ang mga partner na malapit sa puso mo.', 'Pick as many as you like. We use this to show you partner stories you care about in Kwento.')}</p>
+      <p className="text-[14.5px] text-muted">{t('lesson.pick_as_many_as_you_like')}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {impactAreas.map(x => {
           const a = x.tl
@@ -284,9 +284,9 @@ function ImpactPicker({ onDone }: { onDone: () => void }) {
           )
         })}
       </div>
-      <p className="mt-3 text-[12px] text-muted"><TBC>[{t('Mga totoong impact area ng KaNegosyo', "KaNegosyo's real impact areas")} — confirm with SEDPI]</TBC></p>
-      <p className="mt-2 text-[13px] leading-snug text-muted">{t('Paalala: pooled ang pera, kaya hindi mo pinipili ang iisang partner. Ipinapakita lang namin ang mga kwentong gusto mong makita.', "Note: the money is pooled, so you don't pick a single partner. We only show you the stories you want to see.")}</p>
-      <Button full className="mt-4" disabled={!picks.length} onClick={() => { set({ impactPicks: picks }); onDone() }}>{t('I-save ang pinili ko', 'Save my picks')}</Button>
+      <p className="mt-3 text-[12px] text-muted"><TBC>[{t('lesson.kanegosyos_real_impact_areas')} — confirm with SEDPI]</TBC></p>
+      <p className="mt-2 text-[13px] leading-snug text-muted">{t('lesson.note_the_money_is_pooled_so')}</p>
+      <Button full className="mt-4" disabled={!picks.length} onClick={() => { set({ impactPicks: picks }); onDone() }}>{t('lesson.save_my_picks')}</Button>
     </div>
   )
 }
@@ -315,7 +315,7 @@ function CompareOptions({ onDone }: { onDone: () => void }) {
   const cols = ['KaSosyo JVS', 'Pag-IBIG MP2', 'Savings account']
   return (
     <div>
-      <p className="text-[14.5px] text-muted">{t('Ikumpara sa SEXY order. Ang kita ang huling row, sadyang ganoon.', 'Compared in SEXY order. Returns are the last row, on purpose.')}</p>
+      <p className="text-[14.5px] text-muted">{t('lesson.compared_in_sexy_order_returns_are')}</p>
       <div className="mt-3 grid grid-cols-3 gap-1.5 text-center text-[12px] font-bold">
         {cols.map(c => <div key={c} className="rounded-xl bg-teal-tint px-1 py-2 leading-tight">{c}</div>)}
       </div>
@@ -331,8 +331,8 @@ function CompareOptions({ onDone }: { onDone: () => void }) {
           </div>
         ))}
       </div>
-      <p className="mt-3 text-[12.5px] leading-snug text-muted">{t('Walang tamang sagot para sa lahat. Piliin ang tugma sa goal mo, at pwede mong pagsabayin.', "There's no one right answer for everyone. Pick what fits your goal, and you can use more than one.")}</p>
-      <Button full className="mt-4" onClick={onDone}>{t('Naikumpara ko na', "I've compared them")}</Button>
+      <p className="mt-3 text-[12.5px] leading-snug text-muted">{t('lesson.theres_no_one_right_answer_for')}</p>
+      <Button full className="mt-4" onClick={onDone}>{t('lesson.ive_compared_them')}</Button>
     </div>
   )
 }

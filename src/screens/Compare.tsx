@@ -47,9 +47,9 @@ export default function Compare() {
   return (
     <Screen>
       <div className="px-4 pt-5">
-        <h1 className="text-[23px] font-extrabold leading-tight">{t('Ngayon vs. Unang Hakbang', 'Today vs. Unang Hakbang')}</h1>
+        <h1 className="text-[23px] font-extrabold leading-tight">{t('compare.today_vs_unang_hakbang')}</h1>
         <div className="mt-2 grid grid-cols-2 gap-3 text-[11.5px] font-bold uppercase tracking-wider">
-          <p className="text-muted">{t('Ngayon (chatbot)', 'Today (chatbot)')}</p>
+          <p className="text-muted">{t('compare.today_chatbot')}</p>
           <p className="text-teal">Unang Hakbang</p>
         </div>
       </div>

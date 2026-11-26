@@ -42,16 +42,16 @@ export default function Sumali() {
   const go = (s: number) => { setParams({ step: String(s) }); window.scrollTo(0, 0) }
   const { toast } = useDemo()
   const { t } = useT()
-  const steps = [t('Kilalanin', 'Learn'), t('Ikaw', 'You'), t('Kasunduan', 'Terms'), t('Bayad', 'Pay')]
+  const steps = [t('sumali.learn'), t('sumali.you'), t('sumali.terms'), t('sumali.pay')]
 
   return (
     <Screen>
       <TopBar
         back={step === 1 ? '/hakbang' : `/sumali?step=${step - 1}`}
-        title={t('Sumali sa KaSosyo', 'Join KaSosyo')}
+        title={t('sumali.join_kasosyo')}
         right={
-          <button onClick={() => toast(t('Na-save ang progress mo. Ituloy mo kahit kailan, dito mismo.', 'Your progress is saved. Continue any time, right here.'))} aria-label={t('I-save at ituloy mamaya', 'Save and continue later')} className="flex h-11 items-center gap-1 rounded-full px-2 text-[13px] font-semibold text-teal">
-            <Save size={16} /> {t('I-save', 'Save')}
+          <button onClick={() => toast(t('sumali.your_progress_is_saved_continue_any'))} aria-label={t('sumali.save_and_continue_later')} className="flex h-11 items-center gap-1 rounded-full px-2 text-[13px] font-semibold text-teal">
+            <Save size={16} /> {t('sumali.save')}
           </button>
         }
       />
@@ -81,7 +81,7 @@ function StepHead({ n, title, children }: { n: number; title: string; children?:
   )
 }
 
-/* ---------- Step 1: PMES, redesigned ---------- */
+/* ---------- Step 1: orientation (PMES), redesigned ---------- */
 
 function StepKilalanin({ onNext }: { onNext: () => void }) {
   const { state, set } = useDemo()
@@ -94,8 +94,8 @@ function StepKilalanin({ onNext }: { onNext: () => void }) {
 
   return (
     <>
-      <StepHead n={1} title={t('Kilalanin ang SEDPI Coop', 'Get to know SEDPI Coop')}>
-        {t('Ito ang', 'This is the')} <b className="text-ink">PMES</b> {t('— ang maikling orientation na kailangan bago maging member. Limang maikling kabanata, 1–2 minuto bawat isa.', '(Pre-Membership Education Seminar) — the short orientation you need before becoming a member. Five short chapters, 1–2 minutes each.')}
+      <StepHead n={1} title={t('sumali.get_to_know_sedpi_coop')}>
+        {t('sumali.this_is_the')} <b className="text-ink">orientation</b> {t('sumali.pre_membership_education_seminar_the_short')}
       </StepHead>
 
       <div className="px-4 pt-4">
@@ -113,14 +113,14 @@ function StepKilalanin({ onNext }: { onNext: () => void }) {
                     ? <Photo slot={c.photo} compact className="size-16 shrink-0 rounded-2xl" />
                     : <IconScene icon={c.icon} tint={c.tint} fg={c.fg} className="size-16 shrink-0 rounded-2xl [&>svg]:size-7" />}
                   <div className="min-w-0 flex-1">
-                    <p className="text-[11.5px] font-semibold text-muted">{t('Kabanata', 'Chapter')} {i + 1} · {c.min}</p>
+                    <p className="text-[11.5px] font-semibold text-muted">{t('sumali.chapter')} {i + 1} · {c.min}</p>
                     <p className="text-[15px] font-semibold leading-snug">{tx(c.title)}</p>
                     <p className="text-[12.5px] leading-snug text-muted">{tx(c.summary)}</p>
                   </div>
                   {isDone ? (
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-teal text-white" aria-label={t('Tapos na', 'Done')}><Check size={16} strokeWidth={3} /></span>
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-teal text-white" aria-label={t('sumali.done')}><Check size={16} strokeWidth={3} /></span>
                   ) : (
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full border-2 border-teal/30 text-teal" aria-label={t('Panoorin', 'Watch')}><Play size={13} fill="currentColor" /></span>
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full border-2 border-teal/30 text-teal" aria-label={t('sumali.watch')}><Play size={13} fill="currentColor" /></span>
                   )}
                 </button>
               </li>
@@ -131,11 +131,11 @@ function StepKilalanin({ onNext }: { onNext: () => void }) {
 
       <StickyBar>
         <Button full disabled={!all} onClick={onNext}>
-          {all ? <>{t('Ituloy sa Hakbang 2', 'Continue to Step 2')} <ArrowRight size={18} /></> : t(`Tapusin ang ${chapters.length - done.length} pang kabanata`, `Finish ${chapters.length - done.length} more chapter${chapters.length - done.length > 1 ? 's' : ''}`)}
+          {all ? <>{t('sumali.continue_to_step_2')} <ArrowRight size={18} /></> : t(`Tapusin ang ${chapters.length - done.length} pang kabanata`, `Finish ${chapters.length - done.length} more chapter${chapters.length - done.length > 1 ? 's' : ''}`)}
         </Button>
       </StickyBar>
 
-      <Sheet open={!!ch} onClose={() => setOpen(null)} title={ch ? `${t('Kabanata', 'Chapter')} ${open! + 1}` : ''}>
+      <Sheet open={!!ch} onClose={() => setOpen(null)} title={ch ? `${t('sumali.chapter')} ${open! + 1}` : ''}>
         {ch && (
           <div>
             <div className="relative">
@@ -144,9 +144,9 @@ function StepKilalanin({ onNext }: { onNext: () => void }) {
             </div>
             <h3 className="mt-4 text-[20px] font-bold leading-snug">{tx(ch.title)}</h3>
             <p className="mt-1 text-[15px] leading-relaxed text-muted">{tx(ch.summary)}</p>
-            <p className="mt-2"><TBC>[{t('Script ng kabanata mula sa official PMES', 'Chapter script from the official PMES')} — confirm with SEDPI]</TBC></p>
+            <p className="mt-2"><TBC>[{t('sumali.chapter_script_from_the_official_pmes')} — confirm with SEDPI]</TBC></p>
             <Button full className="mt-5" onClick={() => { markDone(open!); setOpen(open! + 1 < chapters.length ? open! + 1 : null) }}>
-              <Check size={18} /> {t('Tapos ko na ito', "I've finished this")}
+              <Check size={18} /> {t('sumali.ive_finished_this')}
             </Button>
           </div>
         )}
@@ -176,29 +176,29 @@ function StepIkaw({ onNext }: { onNext: () => void }) {
   const { t } = useT()
   const mobileOk = /^\+639\d{9}$/.test(p.mobile.replace(/\s/g, ''))
   const errors = {
-    name: p.name.trim().length < 3 ? t('Ilagay ang buong pangalan mo.', 'Enter your full name.') : undefined,
-    email: /.+@.+\..+/.test(p.email) ? undefined : t('Mukhang kulang ang email. Halimbawa: bea@email.com', 'That email looks incomplete. Example: bea@email.com'),
-    mobile: mobileOk ? undefined : t('Gamitin ang format na +639XXXXXXXXX.', 'Use the format +639XXXXXXXXX.'),
+    name: p.name.trim().length < 3 ? t('sumali.enter_your_full_name') : undefined,
+    email: /.+@.+\..+/.test(p.email) ? undefined : t('sumali.that_email_looks_incomplete_example_bea'),
+    mobile: mobileOk ? undefined : t('sumali.use_the_format_639xxxxxxxxx'),
   }
   const valid = !errors.name && !errors.email && !errors.mobile && p.sfi
 
   return (
     <>
-      <StepHead n={2} title={t('Ikaw', 'About you')}>{t('Ngayon lang namin hihingin ang detalye mo — pagkatapos mong makilala ang co-op.', 'We only ask for your details now — after you have gotten to know the co-op.')}</StepHead>
+      <StepHead n={2} title={t('sumali.about_you')}>{t('sumali.we_only_ask_for_your_details')}</StepHead>
       <div className="grid gap-4 px-4 pb-28 pt-5">
-        <Field id="name" label={t('Buong pangalan', 'Full name')} hint={t('Kapareho ng nasa valid ID mo.', 'Same as on your valid ID.')} value={p.name} onChange={e => update({ name: e.target.value })} autoComplete="name" error={touched ? errors.name : undefined} />
-        <Field id="email" label="Email" type="email" hint={t('Dito namin ipapadala ang PMES certificate at KSO login mo.', 'We will send your PMES certificate and KSO login here.')} value={p.email} onChange={e => update({ email: e.target.value })} autoComplete="email" error={touched ? errors.email : undefined} />
-        <Field id="mobile" label={t('Mobile number', 'Mobile number')} type="tel" hint="Format: +639XXXXXXXXX" value={p.mobile} onChange={e => update({ mobile: e.target.value })} autoComplete="tel" error={touched ? errors.mobile : undefined} />
+        <Field id="name" label={t('sumali.full_name')} hint={t('sumali.same_as_on_your_valid_id')} value={p.name} onChange={e => update({ name: e.target.value })} autoComplete="name" error={touched ? errors.name : undefined} />
+        <Field id="email" label="Email" type="email" hint={t('sumali.we_will_send_your_pmes_certificate')} value={p.email} onChange={e => update({ email: e.target.value })} autoComplete="email" error={touched ? errors.email : undefined} />
+        <Field id="mobile" label={t('sumali.mobile_number')} type="tel" hint="Format: +639XXXXXXXXX" value={p.mobile} onChange={e => update({ mobile: e.target.value })} autoComplete="tel" error={touched ? errors.mobile : undefined} />
         <div>
           <Checkbox checked={p.sfi} onChange={v => update({ sfi: v })}>
-            {t('Isasali rin kita sa', 'Also sign me up for')} <b>SEDPI Foundation, Inc. (SFI)</b> {t('— libre. Kailangan ito para maging associate member.', "— it's free. This is required to become an associate member.")}
+            {t('sumali.also_sign_me_up_for')} <b>SEDPI Foundation, Inc. (SFI)</b> {t('sumali.its_free_this_is_required_to')}
           </Checkbox>
-          <p className="mt-1.5 px-1 text-[12.5px] leading-snug text-muted">{t('Ang', 'An')} <b>associate member</b> {t('ay member na pwedeng mag-invest sa co-op. Walang bayad ang pagsali sa SFI.', 'is a member who can invest in the co-op. Joining SFI costs nothing.')}</p>
+          <p className="mt-1.5 px-1 text-[12.5px] leading-snug text-muted">{t('sumali.an')} <b>associate member</b> {t('sumali.is_a_member_who_can_invest')}</p>
         </div>
       </div>
       <StickyBar>
-        <Button full onClick={() => (valid ? onNext() : setTouched(true))}>{t('Ituloy sa Hakbang 3', 'Continue to Step 3')} <ArrowRight size={18} /></Button>
-        {touched && !valid && <p className="mt-2 text-center text-[12.5px] font-semibold text-sexy-y">{p.sfi ? t('May kulang pa sa itaas.', 'Something above still needs fixing.') : t('I-check ang SFI box para makapagpatuloy.', 'Tick the SFI box to continue.')}</p>}
+        <Button full onClick={() => (valid ? onNext() : setTouched(true))}>{t('sumali.continue_to_step_3')} <ArrowRight size={18} /></Button>
+        {touched && !valid && <p className="mt-2 text-center text-[12.5px] font-semibold text-sexy-y">{p.sfi ? t('sumali.something_above_still_needs_fixing') : t('sumali.tick_the_sfi_box_to_continue')}</p>}
       </StickyBar>
     </>
   )
@@ -223,7 +223,7 @@ function StepKasunduan({ onNext }: { onNext: () => void }) {
   const nav = useNavigate()
   return (
     <>
-      <StepHead n={3} title={t('Mga kasunduan', 'The agreement')}>{t('Ang buod, sa limang punto. Nandito rin ang buong T&C kung gusto mong basahin.', 'The summary, in five points. The full T&Cs are here too if you want to read them.')}</StepHead>
+      <StepHead n={3} title={t('sumali.the_agreement')}>{t('sumali.the_summary_in_five_points_the')}</StepHead>
       <div className="px-4 pb-28 pt-4">
         <ol className="grid gap-2">
           {terms.map((term, i) => (
@@ -236,31 +236,31 @@ function StepKasunduan({ onNext }: { onNext: () => void }) {
 
         <details className="group mt-3 rounded-2xl border border-line bg-card">
           <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 text-[14.5px] font-semibold text-teal">
-            {t('Basahin ang buong T&C', 'Read the full T&Cs')} <ChevronDown size={18} className="transition group-open:rotate-180" />
+            {t('sumali.read_the_full_t_cs')} <ChevronDown size={18} className="transition group-open:rotate-180" />
           </summary>
           <div className="max-h-56 overflow-y-auto border-t border-line px-4 py-3 text-[13px] leading-relaxed text-muted">
-            <p><TBC>[{t('Buong Terms & Conditions ng SEDPI Coop — ilalagay ang official text dito', "SEDPI Coop's full Terms & Conditions — official text goes here")}]</TBC></p>
+            <p><TBC>[{t('sumali.sedpi_coops_full_terms_conditions_official')}]</TBC></p>
             {Array.from({ length: 6 }, (_, i) => <span key={i} className="mt-2 block h-2.5 rounded bg-placeholder" style={{ width: `${70 + ((i * 13) % 30)}%` }} />)}
           </div>
         </details>
 
         <div className="mt-4">
-          <Checkbox checked={checked} onChange={setChecked}>{t('Nabasa ko ang buod, at naiintindihan ko ang mga kasunduan.', 'I read the summary and I understand the agreement.')}</Checkbox>
+          <Checkbox checked={checked} onChange={setChecked}>{t('sumali.i_read_the_summary_and_i')}</Checkbox>
         </div>
         <button onClick={() => setUnsure(true)} className="mx-auto mt-3 block min-h-11 text-[14px] font-semibold text-teal underline underline-offset-4">
-          {t('Hindi pa ako sigurado', "I'm not sure yet")}
+          {t('sumali.im_not_sure_yet')}
         </button>
       </div>
       <StickyBar>
-        <Button full disabled={!checked} onClick={() => { set({ agreed: true }); onNext() }}>{t('Sang-ayon ako', 'I agree')}</Button>
+        <Button full disabled={!checked} onClick={() => { set({ agreed: true }); onNext() }}>{t('sumali.i_agree')}</Button>
       </StickyBar>
 
-      <Sheet open={unsure} onClose={() => setUnsure(false)} title={t("Okay lang 'yan", "That's okay")}>
-        <p className="text-[15px] leading-relaxed text-muted">{t('Na-save namin ang progress mo hanggang dito. Walang pressure — bumalik ka kapag handa ka na.', "We saved your progress up to here. No pressure — come back when you're ready.")}</p>
+      <Sheet open={unsure} onClose={() => setUnsure(false)} title={t('sumali.thats_okay')}>
+        <p className="text-[15px] leading-relaxed text-muted">{t('sumali.we_saved_your_progress_up_to')}</p>
         <div className="mt-4 grid gap-2">
-          <Button full onClick={() => { setUnsure(false); openMessenger() }}><Bell size={18} /> {t('Paalalahanan ako sa Messenger', 'Remind me on Messenger')}</Button>
-          <Button full variant="secondary" onClick={() => { setUnsure(false); openMessenger() }}><MessageCircle size={18} /> {t('May tanong ako kay Zion', 'I have a question for Zion')}</Button>
-          <Button full variant="ghost" onClick={() => nav('/hakbang')}>{t('Balikan ko na lang mamaya', "I'll come back later")}</Button>
+          <Button full onClick={() => { setUnsure(false); openMessenger() }}><Bell size={18} /> {t('sumali.remind_me_on_messenger')}</Button>
+          <Button full variant="secondary" onClick={() => { setUnsure(false); openMessenger() }}><MessageCircle size={18} /> {t('sumali.i_have_a_question_for_zion')}</Button>
+          <Button full variant="ghost" onClick={() => nav('/hakbang')}>{t('sumali.ill_come_back_later')}</Button>
         </div>
       </Sheet>
     </>
@@ -280,7 +280,7 @@ function StepBayad() {
 
   return (
     <>
-      <StepHead n={4} title={t('Bayaran ang ₱1,100', 'Pay the ₱1,100')}>{t('Isang bayad, dalawang bahagi.', 'One payment, two parts.')}</StepHead>
+      <StepHead n={4} title={t('sumali.pay_the_1_100')}>{t('sumali.one_payment_two_parts')}</StepHead>
       <div className="px-4 pb-32 pt-4">
         {/* Breakdown */}
         <div className="rounded-3xl border border-line bg-card p-4">
@@ -291,21 +291,21 @@ function StepBayad() {
           <dl className="mt-4 grid gap-3">
             <div className="flex gap-3">
               <span className="mt-1 size-3 shrink-0 rounded-full bg-mangga" />
-              <div><dt className="text-[15px] font-semibold">₱100 membership fee</dt><dd className="text-[13.5px] text-muted">{t('Isang beses lang. (₱500 kung lampas ₱100,000 ang savings mo.)', 'One time only. (₱500 if your savings are over ₱100,000.)')}</dd></div>
+              <div><dt className="text-[15px] font-semibold">₱100 membership fee</dt><dd className="text-[13.5px] text-muted">{t('sumali.one_time_only_500_if_your')}</dd></div>
             </div>
             <div className="flex gap-3">
               <span className="mt-1 size-3 shrink-0 rounded-full bg-teal" />
-              <div><dt className="text-[15px] font-semibold">₱1,000 share capital</dt><dd className="text-[13.5px] text-muted">{t('Sa iyo ito bilang co-owner. Nananatili sa co-op habang member ka.', 'This is yours as a co-owner. It stays in the co-op while you are a member.')}</dd></div>
+              <div><dt className="text-[15px] font-semibold">₱1,000 share capital</dt><dd className="text-[13.5px] text-muted">{t('sumali.this_is_yours_as_a_co')}</dd></div>
             </div>
           </dl>
           <div className="mt-4 flex items-baseline justify-between border-t border-dashed border-line pt-3">
-            <span className="text-[14px] font-semibold">{t('Kabuuan', 'Total')}</span>
+            <span className="text-[14px] font-semibold">{t('sumali.total')}</span>
             <span className="font-display text-[24px] font-extrabold">₱1,100</span>
           </div>
         </div>
 
         {/* Channels */}
-        <h2 className="mt-6 px-1 text-[17px] font-bold">{t('Saan ka magbabayad?', 'Where will you pay?')}</h2>
+        <h2 className="mt-6 px-1 text-[17px] font-bold">{t('sumali.where_will_you_pay')}</h2>
         <div className="mt-2 grid gap-2" role="radiogroup">
           {channels.map((c, i) => (
             <ChoiceCard key={c} selected={channel === i} onClick={() => setChannel(i)} className="min-h-14 pr-10">
@@ -315,13 +315,13 @@ function StepBayad() {
         </div>
         {channel !== null && (
           <div className="rise mt-2 rounded-2xl bg-teal-soft p-3 text-[13px] text-muted">
-            {t('Account details:', 'Account details:')} <TBC>[account name & number — confirm with SEDPI]</TBC>
+            {t('sumali.account_details')} <TBC>[account name & number — confirm with SEDPI]</TBC>
           </div>
         )}
 
         {/* Upload */}
-        <h2 className="mt-6 px-1 text-[17px] font-bold">{t('I-upload ang resibo dito', 'Upload your receipt here')}</h2>
-        <p className="px-1 text-[13.5px] text-muted">{t('Screenshot o litrato. Ito na ang deposit report — wala nang hiwalay na form.', 'A screenshot or photo. This is your deposit report — no separate form.')}</p>
+        <h2 className="mt-6 px-1 text-[17px] font-bold">{t('sumali.upload_your_receipt_here')}</h2>
+        <p className="px-1 text-[13.5px] text-muted">{t('sumali.a_screenshot_or_photo_this_is')}</p>
         <label className={`mt-2 flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed p-4 text-center ${file ? 'border-teal bg-teal-soft' : 'border-[#b9c0b8] bg-card'}`}>
           <input type="file" accept="image/*,.pdf" className="sr-only" onChange={e => {
             const f = e.target.files?.[0]
@@ -331,20 +331,20 @@ function StepBayad() {
             <>
               {file.url ? <img src={file.url} alt="" className="h-20 rounded-xl object-cover" /> : <Receipt size={28} className="text-teal" />}
               <span className="text-[14px] font-semibold text-teal">{file.name}</span>
-              <span className="text-[12.5px] text-muted">{t('Pindutin para palitan', 'Tap to replace')}</span>
+              <span className="text-[12.5px] text-muted">{t('sumali.tap_to_replace')}</span>
             </>
           ) : (
             <>
               <span className="grid size-12 place-items-center rounded-full bg-teal-tint text-teal"><Upload size={22} /></span>
-              <span className="text-[14.5px] font-semibold">{t('Pumili ng screenshot o litrato', 'Choose a screenshot or photo')}</span>
+              <span className="text-[14.5px] font-semibold">{t('sumali.choose_a_screenshot_or_photo')}</span>
             </>
           )}
         </label>
-        <button onClick={() => setFile({ name: 'resibo-sample.jpg' })} className="mt-1 min-h-11 px-1 text-[12.5px] text-muted underline underline-offset-4">{t('Demo: gumamit ng sample na resibo', 'Demo: use a sample receipt')}</button>
+        <button onClick={() => setFile({ name: 'resibo-sample.jpg' })} className="mt-1 min-h-11 px-1 text-[12.5px] text-muted underline underline-offset-4">{t('sumali.demo_use_a_sample_receipt')}</button>
       </div>
       <StickyBar>
-        <Button full disabled={!file} onClick={() => { set({ receipt: file!.name }); nav('/sumali/done') }}>{t('I-submit ang resibo', 'Submit receipt')}</Button>
-        <button onClick={() => toast(t('Na-save. Pwede mong i-upload ang resibo mamaya, dito rin.', 'Saved. You can upload your receipt later, right here.'))} className="mt-1 min-h-11 w-full text-[13.5px] font-semibold text-teal">{t('Mamaya ko na ia-upload', "I'll upload it later")}</button>
+        <Button full disabled={!file} onClick={() => { set({ receipt: file!.name }); nav('/sumali/done') }}>{t('sumali.submit_receipt')}</Button>
+        <button onClick={() => toast(t('sumali.saved_you_can_upload_your_receipt'))} className="mt-1 min-h-11 w-full text-[13.5px] font-semibold text-teal">{t('sumali.ill_upload_it_later')}</button>
       </StickyBar>
     </>
   )
@@ -357,17 +357,17 @@ export function SumaliDone() {
   const nav = useNavigate()
   const { t } = useT()
   const timeline = [
-    { icon: Mail, title: t('Sa loob ng 3 araw: email mula sa amin', 'Within 3 days: an email from us'), body: t('Ang PMES certificate mo at ang login sa KaSosyo Online (KSO) — ang account kung saan mo makikita ang investments mo.', 'Your PMES certificate and your KaSosyo Online (KSO) login — the account where you see your investments.') },
-    { icon: BadgeCheck, title: t('Makukumpirma ang ₱1,100 mo', 'Your ₱1,100 gets confirmed'), body: <>{t('Sasabihan ka namin kapag natanggap na.', "We'll tell you once it's received.")} <TBC>[{t('paano kino-confirm', 'how it is confirmed')} — confirm with SEDPI]</TBC></> },
-    { icon: Clock, title: t('Piliin ang unang JVS mo', 'Choose your first JVS'), body: t('JVS (Joint Venture Savings) — ang paraan ng pag-invest sa KaSosyo. Simula ₱10,000.', 'JVS (Joint Venture Savings) — the way you invest in KaSosyo. Starts at ₱10,000.') },
+    { icon: Mail, title: t('sumali.within_3_days_an_email_from'), body: t('sumali.your_pmes_certificate_and_your_kasosyo') },
+    { icon: BadgeCheck, title: t('sumali.your_1_100_gets_confirmed'), body: <>{t('sumali.well_tell_you_once_its_received')} <TBC>[{t('sumali.how_it_is_confirmed')} — confirm with SEDPI]</TBC></> },
+    { icon: Clock, title: t('sumali.choose_your_first_jvs'), body: t('sumali.jvs_joint_venture_savings_the_way') },
   ]
   return (
     <Screen>
       <TopBar />
       <div className="rise flex-1 px-5 pb-8 pt-8">
         <span className="stone grid size-20 -rotate-6 place-items-center bg-teal text-white"><Check size={40} strokeWidth={2.5} /></span>
-        <h1 className="mt-5 text-[32px] font-extrabold leading-tight">{t('Member ka na', "You're a member")} <span className="text-teal">({t('halos', 'almost')})</span>!</h1>
-        <p className="mt-2 text-[15px] leading-relaxed text-muted">{t('Natanggap namin ang resibo mo. Ito ang mangyayari susunod:', 'We got your receipt. Here is what happens next:')}</p>
+        <h1 className="mt-5 text-[32px] font-extrabold leading-tight">{t('sumali.youre_a_member')} <span className="text-teal">({t('sumali.almost')})</span>!</h1>
+        <p className="mt-2 text-[15px] leading-relaxed text-muted">{t('sumali.we_got_your_receipt_here_is')}</p>
 
         <ol className="relative mt-6 grid gap-5">
           <span aria-hidden className="absolute bottom-6 left-[21px] top-6 border-l-2 border-dashed border-teal/30" />
@@ -384,7 +384,7 @@ export function SumaliDone() {
 
         <label className="mt-7 flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border border-line bg-card p-4">
           <Bell size={20} className="shrink-0 text-teal" />
-          <span className="flex-1 text-[14.5px] font-semibold leading-snug">{t('Paalalahanan ako sa Messenger', 'Remind me on Messenger')}<span className="block text-[12.5px] font-normal text-muted">{t('Para hindi mo makaligtaan ang email at ang susunod na hakbang.', "So you don't miss the email and the next step.")}</span></span>
+          <span className="flex-1 text-[14.5px] font-semibold leading-snug">{t('sumali.remind_me_on_messenger')}<span className="block text-[12.5px] font-normal text-muted">{t('sumali.so_you_dont_miss_the_email')}</span></span>
           <input type="checkbox" role="switch" checked={state.messengerOptIn} onChange={e => set({ messengerOptIn: e.target.checked })} className="peer sr-only" />
           <span aria-hidden className={`relative h-7 w-12 shrink-0 rounded-full transition peer-focus-visible:ring-4 peer-focus-visible:ring-mangga ${state.messengerOptIn ? 'bg-teal' : 'bg-line'}`}>
             <span className={`absolute top-1 size-5 rounded-full bg-white shadow transition-all ${state.messengerOptIn ? 'left-6' : 'left-1'}`} />
@@ -392,8 +392,8 @@ export function SumaliDone() {
         </label>
       </div>
       <StickyBar>
-        <Button full onClick={() => nav('/invest')}>{t('Silipin ang unang JVS', 'Look at a first JVS')} <ArrowRight size={18} /></Button>
-        <button onClick={() => nav('/hakbang')} className="mt-1 min-h-11 w-full text-[13.5px] font-semibold text-teal">{t('Balik sa Unang Hakbang', 'Back to my first steps')}</button>
+        <Button full onClick={() => nav('/invest')}>{t('sumali.look_at_a_first_jvs')} <ArrowRight size={18} /></Button>
+        <button onClick={() => nav('/hakbang')} className="mt-1 min-h-11 w-full text-[13.5px] font-semibold text-teal">{t('sumali.back_to_my_first_steps')}</button>
       </StickyBar>
     </Screen>
   )

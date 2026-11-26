@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/copy-content.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/copy-content.mjs",
     "build": "tsc -p . && vite build",
     "preview": "vite preview",
     "screenshots": "node scripts/screenshots.mjs"

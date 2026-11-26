@@ -22,7 +22,7 @@ export function TopBar({ title, back, right }: { title?: ReactNode; back?: strin
     <header className="sticky top-0 z-30 flex h-14 items-center gap-1 border-b border-line/70 bg-paper/95 px-2 backdrop-blur">
       {back ? (
         <button
-          aria-label={t('Bumalik', 'Back')}
+          aria-label={t('ui.back')}
           onClick={() => (back === true ? nav(-1) : nav(back))}
           className="grid size-11 place-items-center rounded-full text-ink hover:bg-teal-soft"
         >
@@ -95,7 +95,7 @@ export function Photo({ slot, className = '', children, compact, quiet }: { slot
         <div className="absolute inset-0 grid place-items-center bg-[repeating-linear-gradient(135deg,transparent_0_10px,rgba(0,0,0,.025)_10px_20px)] p-2 text-center">
           <span className="flex flex-col items-center gap-1 text-muted">
             <ImageIcon size={compact ? 16 : 20} aria-hidden />
-            {!compact && <span className="text-[11.5px] font-semibold leading-tight">[{t('Kailangan ng photo', 'Photo needed')}]</span>}
+            {!compact && <span className="text-[11.5px] font-semibold leading-tight">[{t('ui.photo_needed')}]</span>}
             <span className={`leading-tight ${compact ? 'text-[9.5px]' : 'text-[11px]'}`}>{p.hint}</span>
           </span>
         </div>
@@ -260,7 +260,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
 export function useMessenger() {
   const { toast } = useDemo()
   const { t } = useT()
-  return () => toast(t('Sa totoong site, bubuksan nito ang Messenger chat ng SEDPI.', "On the real site, this opens SEDPI's Messenger chat.") + ' [m.me link — confirm with SEDPI]')
+  return () => toast(t('ui.on_the_real_site_this_opens') + ' [m.me link — confirm with SEDPI]')
 }
 
 /** Floating "Chat kay Zion" button for the sign-up wizard. Sits above the sticky bar. */
@@ -274,29 +274,26 @@ export function ChatFab({ bottom = 92 }: { bottom?: number }) {
         onClick={() => setOpen(true)}
         className="fixed z-30 flex min-h-12 items-center gap-2 rounded-full bg-ink py-1.5 pl-1.5 pr-3.5 text-left text-white shadow-lg"
         style={{ bottom, right: 'max(12px, calc(50vw - 215px + 12px))' }}
-        aria-label={t('May tanong? Chat kay Zion', 'Questions? Chat with Zion')}
+        aria-label={t('ui.questions_chat_with_zion')}
       >
         <span className="grid size-9 place-items-center rounded-full bg-mangga text-ink"><MessageCircle size={18} /></span>
         <span className="leading-tight">
-          <span className="block text-[11px] text-white/75">{t('May tanong?', 'Questions?')}</span>
-          <span className="block text-[13px] font-semibold">{t('Chat kay Zion', 'Chat with Zion')}</span>
+          <span className="block text-[11px] text-white/75">{t('ui.questions')}</span>
+          <span className="block text-[13px] font-semibold">{t('ui.chat_with_zion')}</span>
         </span>
       </button>
-      <Sheet open={open} onClose={() => setOpen(false)} title={t('Si Zion ang sasagot', 'Zion will answer you')}>
+      <Sheet open={open} onClose={() => setOpen(false)} title={t('ui.zion_will_answer_you')}>
         <div className="flex gap-3">
           <Photo slot="zion" compact className="size-16 shrink-0 rounded-full" />
           <p className="text-[15px] leading-relaxed text-muted">
-            {t(
-              'Si Zion ang member-relations officer ng SEDPI Coop. Tao siya, hindi bot. Itanong mo kahit ano: tungkol sa co-op, sa bayad, o kung para sa iyo ba ito.',
-              "Zion is SEDPI Coop's member-relations officer. A real person, not a bot. Ask anything: about the co-op, the payment, or whether this is right for you.",
-            )}
+            {t('ui.zion_is_sedpi_coops_member_relations')}
           </p>
         </div>
         <div className="mt-4 grid gap-2">
-          <Button full onClick={() => { openMessenger(); setOpen(false) }}><MessageCircle size={18} /> {t('Mag-message kay Zion', 'Message Zion')}</Button>
-          <Button full variant="ghost" onClick={() => setOpen(false)}>{t('Mamaya na lang', 'Maybe later')}</Button>
+          <Button full onClick={() => { openMessenger(); setOpen(false) }}><MessageCircle size={18} /> {t('ui.message_zion')}</Button>
+          <Button full variant="ghost" onClick={() => setOpen(false)}>{t('ui.maybe_later')}</Button>
         </div>
-        <p className="mt-2 text-center text-[12px] text-muted">{t('Oras ng sagot:', 'Reply hours:')} <TBC>[office hours — confirm with SEDPI]</TBC></p>
+        <p className="mt-2 text-center text-[12px] text-muted">{t('ui.reply_hours')} <TBC>[office hours — confirm with SEDPI]</TBC></p>
       </Sheet>
     </>
   )

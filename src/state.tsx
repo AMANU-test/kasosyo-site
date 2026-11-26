@@ -1,4 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
+// Site wording, copied from the project's content/site.json (scripts/copy-content.mjs).
+import copy from './content/site.json'
 
 export type Lang = 'tl' | 'en'
 
@@ -104,14 +106,32 @@ export function useDemo() {
 
 export const peso = (n: number) => '₱' + n.toLocaleString('en-PH')
 
-/** Language helpers: t('Taglish', 'English') or tx({ tl, en }). */
+type Copy = typeof copy
+/** A key into site.json, such as 'landing.take_the_first_step'. Unknown keys fail the build. */
+export type CopyKey = { [G in keyof Copy]: `${G & string}.${keyof Copy[G] & string}` }[keyof Copy]
+
+export function copyText(key: CopyKey): Txt {
+  const [group, name] = key.split('.') as [keyof Copy, string]
+  return (copy[group] as Record<string, Txt>)[name]
+}
+
+/**
+ * Language helpers: t('screen.key') reads site.json; t(tl, en) picks between two values
+ * (only for wording built from live numbers); tx({ tl, en }) picks from a pair.
+ */
 export function useT() {
   const { state, set } = useDemo()
   const en = state.lang === 'en'
+  function t(key: CopyKey): string
+  function t<T>(tl: T, eng: T): T
+  function t(...args: unknown[]) {
+    if (args.length === 1) { const x = copyText(args[0] as CopyKey); return en ? x.en : x.tl }
+    return en ? args[1] : args[0]
+  }
   return {
     lang: state.lang,
     setLang: (lang: Lang) => set({ lang }),
-    t: <T,>(tl: T, eng: T): T => (en ? eng : tl),
+    t,
     tx: (x: Txt) => (en ? x.en : x.tl),
   }
 }

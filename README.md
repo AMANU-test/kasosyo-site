@@ -30,11 +30,13 @@ All colours and fonts are CSS variables in `src/index.css` (`@theme`). The palet
 
 ## Placeholders
 
-Anything SEDPI still has to confirm is shown in `[BRACKETS]`: payment channels, partner stories and photos, impact numbers, return figures, PMES scripts and the full T&C text. To find them all, search the code for `confirm with SEDPI`.
+Anything SEDPI still has to confirm is shown in `[BRACKETS]`: payment channels, partner stories and photos, impact numbers, return figures, orientation scripts and the full T&C text. To find them all, search the code for `confirm with SEDPI`.
 
 ## Language
 
-Every header has a Taglish / English toggle. The choice is remembered, and in `/gallery` it switches every frame at once. Copy lives next to the code as `t('Taglish', 'English')` pairs, and lesson content lives in `src/data/lessons.ts`.
+Every header has a Taglish / English toggle. The choice is remembered, and in `/gallery` it switches every frame at once.
+
+All wording, lessons included, lives in `content/site.json` in the project folder one level up (grouped by screen, each entry a `{ "tl", "en" }` pair). `npm run dev` and `npm run build` copy it into `src/content/site.json` first; commit that copy, since GitHub builds from it. Components call `t('landing.take_the_first_step')`, and a key that isn't in the file fails the build. The only wording left in code is a few lines built from live numbers, such as "Step 2 of 4". `src/data/lessons.ts` keeps just each lesson's icons, quiz answer and length.
 
 ## Hero video
 

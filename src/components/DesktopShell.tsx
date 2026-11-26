@@ -25,7 +25,7 @@ function useWide() {
 
 /** Shrinks the phone to fit short laptop screens. */
 function usePhoneScale() {
-  const calc = () => Math.min(1, (window.innerHeight - 48) / (PHONE_H + BEZEL * 2))
+  const calc = () => Math.min(1, (window.innerHeight - 80) / (PHONE_H + BEZEL * 2))
   const [scale, setScale] = useState(calc)
   useEffect(() => {
     const on = () => setScale(calc())
@@ -42,8 +42,19 @@ function usePhoneScale() {
 export function DesktopShell({ children }: { children: ReactNode }) {
   const wide = useWide()
   const { pathname, search } = useLocation()
-  if (inFrame || !wide || pathname.startsWith('/gallery')) return <>{children}</>
-  return <PhoneStage start={pathname + search} />
+  if (inFrame) return <>{children}</> // inside the laptop phone frame or a gallery frame: the page around it shows the label
+  if (!wide || pathname.startsWith('/gallery')) return <><PrototypeLabel />{children}</>
+  return <><PrototypeLabel /><PhoneStage start={pathname + search} /></>
+}
+
+/** Always-visible notice that this is a class prototype (project rule). */
+function PrototypeLabel() {
+  const { t } = useT()
+  return (
+    <div role="note" className="bg-ink px-4 py-1.5 text-center text-[11.5px] font-semibold leading-snug text-white">
+      {t('desktopShell.prototype_label')}
+    </div>
+  )
 }
 
 function PhoneStage({ start }: { start: string }) {
@@ -61,7 +72,7 @@ function PhoneStage({ start }: { start: string }) {
   const frameH = PHONE_H + BEZEL * 2
 
   return (
-    <div className="flex min-h-dvh items-center justify-center gap-16 bg-[#efece5] px-10 py-6">
+    <div className="flex min-h-[calc(100dvh-30px)] items-center justify-center gap-16 bg-[#efece5] px-10 py-6">
       <div style={{ width: frameW * scale, height: frameH * scale }} className="shrink-0">
         <div
           className="origin-top-left overflow-hidden rounded-[56px] bg-ink shadow-[0_30px_80px_-20px_rgba(31,93,102,.45)]"
@@ -80,20 +91,17 @@ function PhoneStage({ start }: { start: string }) {
         <Wordmark />
         <h1 className="mt-4 text-[34px] font-extrabold leading-[1.05]">Usapang Pera: Unang Hakbang</h1>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
-          {t(
-            'Mobile-first na KaSosyo site. Subukan dito sa phone sa kaliwa, o i-scan para buksan sa sarili mong phone.',
-            'A mobile-first KaSosyo site. Try it in the phone on the left, or scan to open it on your own phone.',
-          )}
+          {t('desktopShell.a_mobile_first_kasosyo_site_try')}
         </p>
 
         <div className="mt-6 flex items-center gap-4 rounded-3xl bg-card p-4 shadow-sm">
-          <div className="size-32 shrink-0" aria-label={t('QR code ng site', 'QR code for the site')} role="img" dangerouslySetInnerHTML={{ __html: qr }} />
+          <div className="size-32 shrink-0" aria-label={t('desktopShell.qr_code_for_the_site')} role="img" dangerouslySetInnerHTML={{ __html: qr }} />
           <div>
-            <p className="flex items-center gap-1.5 text-[14px] font-bold"><Smartphone size={16} /> {t('I-scan gamit ang camera', 'Scan with your camera')}</p>
+            <p className="flex items-center gap-1.5 text-[14px] font-bold"><Smartphone size={16} /> {t('desktopShell.scan_with_your_camera')}</p>
             <p className="mt-1 break-all font-mono text-[11.5px] text-muted">{siteUrl.replace(/^https?:\/\//, '')}</p>
             {isLocal && (
               <p className="mt-2 text-[11.5px] leading-snug text-sexy-x">
-                {t('Localhost ito, kaya gagana lang ang QR kapag naka-deploy na.', 'This is localhost, so the QR only works once the site is deployed.')}
+                {t('desktopShell.this_is_localhost_so_the_qr')}
               </p>
             )}
           </div>
@@ -102,10 +110,10 @@ function PhoneStage({ start }: { start: string }) {
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <LangToggle className="h-10 [&>button]:px-3.5 [&>button]:text-[13px]" />
           <a href={appUrl('/gallery')} className="inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 border-teal/70 px-3.5 text-[13px] font-semibold text-teal">
-            <LayoutGrid size={15} /> {t('Lahat ng screen', 'All screens')}
+            <LayoutGrid size={15} /> {t('desktopShell.all_screens')}
           </a>
         </div>
-        <p className="mt-6 text-[12px] text-muted">MKTG 113 · Group 4 · {t('Prototype para sa', 'Prototype for')} SEDPI</p>
+        <p className="mt-6 text-[12px] text-muted">MKTG 113 · Group 4 · {t('desktopShell.prototype_for')} SEDPI</p>
       </aside>
     </div>
   )

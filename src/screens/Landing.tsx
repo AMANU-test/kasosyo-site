@@ -26,30 +26,30 @@ export default function Landing() {
 
   const steps = [
     {
-      stage: t('Binhi', 'Seed'),
-      title: t('Matuto', 'Learn'),
-      tag: t('Libre · mga 10 min', 'Free · about 10 min'),
-      body: t('Maiikling lessons at ang PMES — ang maikling orientation ng co-op. Sa phone mo, kahit kailan.', "Short lessons and the PMES — the co-op's short orientation. On your phone, any time."),
+      stage: t('landing.seed'),
+      title: t('landing.learn'),
+      tag: t('landing.free_about_10_min'),
+      body: t('landing.short_lessons_and_the_pmes_the'),
     },
     {
-      stage: t('Usbong', 'Sprout'),
-      title: t('Sumali', 'Join'),
+      stage: t('landing.sprout'),
+      title: t('landing.join'),
       tag: '₱1,100',
-      body: t('₱100 na membership fee at ₱1,000 na share capital. I-upload ang resibo, at member ka na.', '₱100 membership fee plus ₱1,000 share capital. Upload your receipt and you are a member.'),
+      body: t('landing.100_membership_fee_plus_1_000'),
     },
     {
-      stage: t('Halaman', 'Plant'),
-      title: t('Mag-invest', 'Invest'),
-      tag: t('Mula ₱10,000', 'From ₱10,000'),
-      body: t('Piliin ang unang JVS mo ayon sa goal mo. Pwede mo itong ipunin muna.', 'Choose your first JVS based on your goal. You can save up for it first.'),
+      stage: t('landing.plant'),
+      title: t('landing.invest'),
+      tag: t('landing.from_10_000'),
+      body: t('landing.choose_your_first_jvs_based_on'),
     },
   ]
 
   const gallery: { slot: PhotoSlot; caption: string }[] = [
-    { slot: 'sedpi-community', caption: t('Ika-20 anibersaryo ng SEDPI', "SEDPI's 20th anniversary") },
-    { slot: 'kanegosyo-team', caption: t('Ang KaNegosyo team', 'The KaNegosyo team') },
-    { slot: 'sedpi-leaders', caption: t('Si Sir Vince at ang SEDPI leaders', 'Sir Vince and SEDPI leaders') },
-    { slot: 'sedpi-team', caption: t('Ang SEDPI team', 'The SEDPI team') },
+    { slot: 'sedpi-community', caption: t('landing.sedpis_20th_anniversary') },
+    { slot: 'kanegosyo-team', caption: t('landing.the_kanegosyo_team') },
+    { slot: 'sedpi-leaders', caption: t('landing.sir_vince_and_sedpi_leaders') },
+    { slot: 'sedpi-team', caption: t('landing.the_sedpi_team') },
   ]
 
   return (
@@ -60,11 +60,11 @@ export default function Landing() {
       <section className="px-5 pb-6 pt-6">
         <Eyebrow>Usapang Pera · Unang Hakbang</Eyebrow>
         <h1 className="mt-2.5 text-[31px] font-extrabold leading-[1.05]">
-          {t('Hindi kailangan ng malaking pera para magsimula.', "You don't need a lot of money to start.")}{' '}
-          <span className="bg-[linear-gradient(transparent_62%,var(--color-mangga)_62%)] text-teal">{t('Kailangan lang magsimula.', 'You just need to start.')}</span>
+          {t('landing.you_dont_need_a_lot_of')}{' '}
+          <span className="bg-[linear-gradient(transparent_62%,var(--color-mangga)_62%)] text-teal">{t('landing.you_just_need_to_start')}</span>
         </h1>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
-          {t('Matuto, sumali, at mag-invest sa mga negosyong Pilipino — paisa-isang hakbang, sa phone mo.', 'Learn, join, and invest in Filipino businesses — one step at a time, on your phone.')}
+          {t('landing.learn_join_and_invest_in_filipino')}
         </p>
 
         <div className="mt-5">
@@ -72,17 +72,17 @@ export default function Landing() {
         </div>
 
         <div ref={heroCta} className="mt-5 grid gap-2.5">
-          <LinkButton to="/hakbang" full>{t('Simulan ang Unang Hakbang', 'Take the first step')} <ArrowRight size={18} /></LinkButton>
+          <LinkButton to="/hakbang" full>{t('landing.take_the_first_step')} <ArrowRight size={18} /></LinkButton>
           <button onClick={openMessenger} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border-2 border-teal/80 text-[15px] font-semibold text-teal">
-            <MessageCircle size={18} /> {t('Magtanong muna', 'Ask a question first')}
+            <MessageCircle size={18} /> {t('landing.ask_a_question_first')}
           </button>
         </div>
       </section>
 
       {/* How to start: a real sequence, drawn as a seed growing into a plant */}
       <section className="bg-teal-soft px-4 pb-7 pt-6">
-        <h2 className="px-1 text-[22px] font-bold leading-tight">{t('Paano magsimula: 3 hakbang lang', 'How to start: just 3 steps')}</h2>
-        <p className="mt-1 px-1 text-[14px] text-muted">{t('Parang pagtatanim: maliit na binhi muna, saka lalago.', 'Like planting: start with a small seed, and let it grow.')}</p>
+        <h2 className="px-1 text-[22px] font-bold leading-tight">{t('landing.how_to_start_just_3_steps')}</h2>
+        <p className="mt-1 px-1 text-[14px] text-muted">{t('landing.like_planting_start_with_a_small')}</p>
         <ol className="relative mt-4 grid gap-3">
           <span aria-hidden className="absolute bottom-12 left-[52px] top-12 border-l-[3px] border-dotted border-[#4f9d52]/50" />
           {steps.map(({ stage, title, tag, body }, i) => (
@@ -106,17 +106,17 @@ export default function Landing() {
 
       {/* Three answers, each with a picture */}
       <section className="px-4 pb-8 pt-7">
-        <h2 className="px-1 text-[22px] font-bold">{t('Ang tatlong tanong ng lahat', 'The three questions everyone asks')}</h2>
+        <h2 className="px-1 text-[22px] font-bold">{t('landing.the_three_questions_everyone_asks')}</h2>
         <div className="mt-3 grid gap-3">
           <article className="overflow-hidden rounded-3xl border border-line bg-card">
             <Photo slot="cda-certificate" className="h-40" />
             <div className="p-4">
-              <h3 className="flex items-center gap-2 text-[18px] font-bold"><ShieldCheck size={20} className="text-sexy-s" /> {t('Ligtas ba?', 'Is it safe?')}</h3>
+              <h3 className="flex items-center gap-2 text-[18px] font-bold"><ShieldCheck size={20} className="text-sexy-s" /> {t('landing.is_it_safe')}</h3>
               <p className="mt-1 text-[14.5px] leading-relaxed text-muted">
-                {t('Rehistrado ang SEDPI Coop sa Cooperative Development Authority (CDA) mula 2021, at naglalabas kami ng audited financial statements taon-taon.', 'SEDPI Coop has been registered with the Cooperative Development Authority (CDA) since 2021, and publishes audited financial statements every year.')}
+                {t('landing.sedpi_coop_has_been_registered_with')}
               </p>
-              <button onClick={() => toast(t('Bubuksan ang transparency reports ng SEDPI.', "Opens SEDPI's transparency reports.") + ' [link — confirm with SEDPI]')} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-semibold text-teal underline underline-offset-4">
-                {t('Tingnan ang audited reports', 'See the audited reports')} <ExternalLink size={14} />
+              <button onClick={() => toast(t('landing.opens_sedpis_transparency_reports') + ' [link — confirm with SEDPI]')} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-semibold text-teal underline underline-offset-4">
+                {t('landing.see_the_audited_reports')} <ExternalLink size={14} />
               </button>
             </div>
           </article>
@@ -132,21 +132,21 @@ export default function Landing() {
               </div>
             </div>
             <div className="p-4">
-              <h3 className="text-[18px] font-bold">{t('Kaya ko ba?', 'Can I afford it?')}</h3>
+              <h3 className="text-[18px] font-bold">{t('landing.can_i_afford_it')}</h3>
               <p className="mt-1 text-[14.5px] leading-relaxed text-muted">
-                {t('₱1,100 para maging member. Ang unang JVS ay ₱10,000, at pwede mo itong ipunin muna.', '₱1,100 to become a member. A first JVS is ₱10,000, and you can save up for it first.')}
+                {t('landing.1_100_to_become_a_member')}
               </p>
             </div>
           </article>
 
           <article className="overflow-hidden rounded-3xl border border-line bg-card">
             <Photo slot="kanegosyo-branch" className="h-40">
-              <span className="absolute bottom-2 left-2 rounded-full bg-ink/70 px-2.5 py-1 text-[11.5px] font-semibold text-white">{t('KaNegosyo branch sa Maco, Davao', 'KaNegosyo branch in Maco, Davao')}</span>
+              <span className="absolute bottom-2 left-2 rounded-full bg-ink/70 px-2.5 py-1 text-[11.5px] font-semibold text-white">{t('landing.kanegosyo_branch_in_maco_davao')}</span>
             </Photo>
             <div className="p-4">
-              <h3 className="text-[18px] font-bold">{t('Saan napupunta ang pera ko?', 'Where does my money go?')}</h3>
+              <h3 className="text-[18px] font-bold">{t('landing.where_does_my_money_go')}</h3>
               <p className="mt-1 text-[14.5px] leading-relaxed text-muted">
-                {t('Pinagsasama ang ipon ng members. Ang pool ang sumusuporta sa mga KaNegosyo partner, tulad ng may-ari ng sari-sari store.', "Members' savings are pooled. The pool supports KaNegosyo partners, like sari-sari store owners.")}
+                {t('landing.members_savings_are_pooled_the_pool')}
               </p>
             </div>
           </article>
@@ -155,8 +155,8 @@ export default function Landing() {
 
       {/* How it works */}
       <section className="px-4 pb-8">
-        <h2 className="px-1 text-[22px] font-bold">{t('Paano gumagana', 'How it works')}</h2>
-        <p className="mt-1 px-1 text-[14.5px] text-muted">{t('Isang ikot ng pera, sa isang tingin.', 'One cycle of money, at a glance.')}</p>
+        <h2 className="px-1 text-[22px] font-bold">{t('landing.how_it_works')}</h2>
+        <p className="mt-1 px-1 text-[14.5px] text-muted">{t('landing.one_cycle_of_money_at_a')}</p>
         <div className="mt-3 rounded-3xl border border-line bg-card px-2 pb-2 pt-4">
           <MoneyFlow />
         </div>
@@ -164,7 +164,7 @@ export default function Landing() {
 
       {/* Photo strip */}
       <section className="pb-8">
-        <h2 className="px-5 text-[22px] font-bold">{t('Kilalanin ang SEDPI', 'Meet SEDPI')}</h2>
+        <h2 className="px-5 text-[22px] font-bold">{t('landing.meet_sedpi')}</h2>
         <div className="snap-row mt-3 flex gap-3 overflow-x-auto px-4 pb-1">
           {gallery.map(g => (
             <figure key={g.slot} className="w-[72%] shrink-0">
@@ -177,27 +177,27 @@ export default function Landing() {
 
       {/* Peer story */}
       <section className="px-4 pb-8">
-        <Eyebrow className="px-1">{t('Mula sa isang KaSosyo', 'From a KaSosyo member')}</Eyebrow>
+        <Eyebrow className="px-1">{t('landing.from_a_kasosyo_member')}</Eyebrow>
         <div className="mt-2 overflow-hidden rounded-3xl bg-teal text-white">
           <Photo slot="member-story" className="h-52" />
           <div className="p-5">
             <Quote size={22} className="text-mangga" aria-hidden />
             <p className="mt-2 font-display text-[19px] font-semibold leading-snug">
-              [{t('Quote ng batang KaSosyo member: paano siya nagsimula, sa sarili niyang salita.', 'Quote from a young KaSosyo member: how they started, in their own words.')}]
+              [{t('landing.quote_from_a_young_kasosyo_member')}]
             </p>
-            <p className="mt-3 text-[13.5px] text-white/80">[{t('Pangalan, edad, trabaho', 'Name, age, job')}]</p>
+            <p className="mt-3 text-[13.5px] text-white/80">[{t('landing.name_age_job')}]</p>
           </div>
         </div>
       </section>
 
       {/* Bakit SEDPI */}
       <section className="mx-4 mb-8 rounded-3xl bg-teal-tint p-4">
-        <h2 className="text-[17px] font-bold">{t('Bakit SEDPI', 'Why SEDPI')}</h2>
+        <h2 className="text-[17px] font-bold">{t('landing.why_sedpi')}</h2>
         <div className="mt-3 flex items-end justify-between gap-1.5" aria-label="Napag-aaralan. Napagtutulungan. Nagagawa.">
           {[
-            [t('Napag-aaralan', 'Learnable'), 'bg-white text-teal', '-rotate-6', 'h-[58px]'],
-            [t('Napagtutulungan', 'Done together'), 'bg-mangga text-ink', 'rotate-3', 'h-[66px]'],
-            [t('Nagagawa', 'Doable'), 'bg-teal text-white', '-rotate-2', 'h-[74px]'],
+            [t('landing.learnable'), 'bg-white text-teal', '-rotate-6', 'h-[58px]'],
+            [t('landing.done_together'), 'bg-mangga text-ink', 'rotate-3', 'h-[66px]'],
+            [t('landing.doable'), 'bg-teal text-white', '-rotate-2', 'h-[74px]'],
           ].map(([w, c, r, h]) => (
             <div key={w} className={`stone grid flex-1 place-items-center px-1 ${c} ${r} ${h}`}>
               <span className="font-display text-[12.5px] font-bold">{w}.</span>
@@ -206,9 +206,9 @@ export default function Landing() {
         </div>
         <ul className="mt-4 grid grid-cols-3 gap-2 text-center">
           {[
-            [Leaf, t('Mula 2004', 'Since 2004'), t('kasama ng Pilipino', 'with Filipinos')],
-            [Users, t('Tao at kalikasan', 'People and planet'), t('bago ang tubo', 'before profit')],
-            [ShieldCheck, 'Co-op', t('ikaw ang co-owner', "you're a co-owner")],
+            [Leaf, t('landing.since_2004'), t('landing.with_filipinos')],
+            [Users, t('landing.people_and_planet'), t('landing.before_profit')],
+            [ShieldCheck, 'Co-op', t('landing.youre_a_co_owner')],
           ].map(([Icon, title, sub]) => {
             const I = Icon as typeof Leaf
             return (
@@ -224,18 +224,15 @@ export default function Landing() {
 
       <footer className="px-5 pb-6 text-[12px] leading-relaxed text-muted">
         <p className="mb-2 flex items-center gap-2 text-[12px] font-semibold">
-          {t('Isang programa ng', 'A program of')}
+          {t('landing.a_program_of')}
           <img src={`${import.meta.env.BASE_URL}photos/sedpi-logo.png`} alt="SEDPI" className="h-7 w-auto" loading="lazy" />
         </p>
-        {t(
-          'SEDPI Coop · CDA Reg. No. 9520-101300032122 · Rehistrado July 21, 2021, Quezon City · Saklaw ng Philippine Cooperative Code of 2008.',
-          'SEDPI Coop · CDA Reg. No. 9520-101300032122 · Registered July 21, 2021, Quezon City · Governed by the Philippine Cooperative Code of 2008.',
-        )}
+        {t('landing.sedpi_coop_cda_reg_no_9520')}
       </footer>
 
       <div className={`sticky bottom-0 z-20 mt-auto transition-opacity ${heroVisible ? 'pointer-events-none opacity-0' : 'opacity-100'}`} aria-hidden={heroVisible}>
         <StickyBar>
-          <LinkButton to="/hakbang" full>{t('Simulan ang Unang Hakbang', 'Take the first step')} <ArrowRight size={18} /></LinkButton>
+          <LinkButton to="/hakbang" full>{t('landing.take_the_first_step')} <ArrowRight size={18} /></LinkButton>
         </StickyBar>
       </div>
     </Screen>
