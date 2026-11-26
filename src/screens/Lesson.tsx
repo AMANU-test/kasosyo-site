@@ -3,7 +3,7 @@ import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-
 import { ArrowRight, BadgeCheck, Captions, Check, Play, RotateCcw, X } from 'lucide-react'
 import { Button, Checkbox, IconScene, SEXY, Screen, Sheet, SexyBadge, StickyBar, TBC, TopBar, type SexyLetter } from '../components/ui'
 import { lessonById, lessons, type Lesson as LessonT } from '../data/lessons'
-import { peso, useDemo, useT, type Txt } from '../state'
+import { copyText, peso, useDemo, useT, type Txt } from '../state'
 
 const tints: Record<SexyLetter, string> = { S: 'bg-[#d6ecec]', E: 'bg-[#e6def2]', X: 'bg-[#f7e2d2]', Y: 'bg-[#f6dcda]' }
 
@@ -284,7 +284,7 @@ function ImpactPicker({ onDone }: { onDone: () => void }) {
           )
         })}
       </div>
-      <p className="mt-3 text-[12px] text-muted"><TBC>[{t('lesson.kanegosyos_real_impact_areas')} — confirm with SEDPI]</TBC></p>
+      <p className="mt-3 text-[12px] text-muted"><TBC>{t('tbc.impact_areas')}</TBC></p>
       <p className="mt-2 text-[13px] leading-snug text-muted">{t('lesson.note_the_money_is_pooled_so')}</p>
       <Button full className="mt-4" disabled={!picks.length} onClick={() => { set({ impactPicks: picks }); onDone() }}>{t('lesson.save_my_picks')}</Button>
     </div>
@@ -294,19 +294,19 @@ function ImpactPicker({ onDone }: { onDone: () => void }) {
 const compareRows: { letter: SexyLetter; label: Txt; cells: Txt[] }[] = [
   {
     letter: 'S', label: { tl: 'Gaano kaligtas', en: 'How safe' },
-    cells: [{ tl: 'CDA-registered co-op, may audited reports', en: 'CDA-registered co-op with audited reports' }, { tl: '[confirm]', en: '[confirm]' }, { tl: '[confirm: PDIC coverage]', en: '[confirm: PDIC coverage]' }],
+    cells: [{ tl: 'CDA-registered co-op, may audited reports', en: 'CDA-registered co-op with audited reports' }, copyText('tbc.to_check'), copyText('tbc.pdic_to_check')],
   },
   {
     letter: 'E', label: { tl: 'Kailan makukuha', en: 'When you can withdraw' },
-    cells: [{ tl: 'Pagkatapos ng term (6 buwan–5 taon)', en: 'After the term (6 months–5 years)' }, { tl: '[confirm: term at withdrawal]', en: '[confirm: term and withdrawal]' }, { tl: 'Kahit kailan', en: 'Any time' }],
+    cells: [{ tl: 'Pagkatapos ng term (6 buwan–5 taon)', en: 'After the term (6 months–5 years)' }, copyText('tbc.term_to_check'), { tl: 'Kahit kailan', en: 'Any time' }],
   },
   {
     letter: 'X', label: { tl: 'Saan napupunta', en: 'Where it goes' },
-    cells: [{ tl: 'Pool para sa nano-negosyo', en: 'A pool for nano-businesses' }, { tl: '[confirm]', en: '[confirm]' }, { tl: '[confirm]', en: '[confirm]' }],
+    cells: [{ tl: 'Pool para sa nano-negosyo', en: 'A pool for nano-businesses' }, copyText('tbc.to_check'), copyText('tbc.to_check')],
   },
   {
     letter: 'Y', label: { tl: 'Kita (not guaranteed)', en: 'Returns (not guaranteed)' },
-    cells: [{ tl: '[historical average — confirm with SEDPI]', en: '[historical average — confirm with SEDPI]' }, { tl: '[confirm]', en: '[confirm]' }, { tl: '[confirm]', en: '[confirm]' }],
+    cells: [copyText('tbc.historical_average'), copyText('tbc.to_check'), copyText('tbc.to_check')],
   },
 ]
 

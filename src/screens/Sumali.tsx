@@ -144,7 +144,7 @@ function StepKilalanin({ onNext }: { onNext: () => void }) {
             </div>
             <h3 className="mt-4 text-[20px] font-bold leading-snug">{tx(ch.title)}</h3>
             <p className="mt-1 text-[15px] leading-relaxed text-muted">{tx(ch.summary)}</p>
-            <p className="mt-2"><TBC>[{t('sumali.chapter_script_from_the_official_pmes')} — confirm with SEDPI]</TBC></p>
+            <p className="mt-2"><TBC>{t('tbc.orientation_script')}</TBC></p>
             <Button full className="mt-5" onClick={() => { markDone(open!); setOpen(open! + 1 < chapters.length ? open! + 1 : null) }}>
               <Check size={18} /> {t('sumali.ive_finished_this')}
             </Button>
@@ -269,7 +269,6 @@ function StepKasunduan({ onNext }: { onNext: () => void }) {
 
 /* ---------- Step 4: pay + upload receipt ---------- */
 
-const channels = [1, 2, 3].map(n => `[Payment channel ${n} — confirm with SEDPI]`)
 
 function StepBayad() {
   const { set, toast } = useDemo()
@@ -307,7 +306,7 @@ function StepBayad() {
         {/* Channels */}
         <h2 className="mt-6 px-1 text-[17px] font-bold">{t('sumali.where_will_you_pay')}</h2>
         <div className="mt-2 grid gap-2" role="radiogroup">
-          {channels.map((c, i) => (
+          {[1, 2, 3].map(n => t('tbc.payment_channel').replace('{n}', String(n))).map((c, i) => (
             <ChoiceCard key={c} selected={channel === i} onClick={() => setChannel(i)} className="min-h-14 pr-10">
               <span className="font-mono text-[12.5px] text-muted">{c}</span>
             </ChoiceCard>
@@ -315,7 +314,7 @@ function StepBayad() {
         </div>
         {channel !== null && (
           <div className="rise mt-2 rounded-2xl bg-teal-soft p-3 text-[13px] text-muted">
-            {t('sumali.account_details')} <TBC>[account name & number — confirm with SEDPI]</TBC>
+            {t('sumali.account_details')} <TBC>{t('tbc.account_details')}</TBC>
           </div>
         )}
 
@@ -358,7 +357,7 @@ export function SumaliDone() {
   const { t } = useT()
   const timeline = [
     { icon: Mail, title: t('sumali.within_3_days_an_email_from'), body: t('sumali.your_pmes_certificate_and_your_kasosyo') },
-    { icon: BadgeCheck, title: t('sumali.your_1_100_gets_confirmed'), body: <>{t('sumali.well_tell_you_once_its_received')} <TBC>[{t('sumali.how_it_is_confirmed')} — confirm with SEDPI]</TBC></> },
+    { icon: BadgeCheck, title: t('sumali.your_1_100_gets_confirmed'), body: <>{t('sumali.well_tell_you_once_its_received')} <TBC>{t('tbc.payment_confirmation')}</TBC></> },
     { icon: Clock, title: t('sumali.choose_your_first_jvs'), body: t('sumali.jvs_joint_venture_savings_the_way') },
   ]
   return (

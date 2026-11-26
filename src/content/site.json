@@ -525,6 +525,10 @@
     "pick_a_goal_first": {
       "tl": "Pumili muna ng goal",
       "en": "Pick a goal first"
+    },
+    "not_guaranteed": {
+      "tl": "hindi garantisado",
+      "en": "not guaranteed"
     }
   },
   "landing": {
@@ -838,10 +842,6 @@
       "tl": "Pumili ng kahit ilan. Gagamitin namin ito para ipakita sa Kwento ang mga partner na malapit sa puso mo.",
       "en": "Pick as many as you like. We use this to show you partner stories you care about in Kwento."
     },
-    "kanegosyos_real_impact_areas": {
-      "tl": "Mga totoong impact area ng KaNegosyo",
-      "en": "KaNegosyo's real impact areas"
-    },
     "note_the_money_is_pooled_so": {
       "tl": "Paalala: pooled ang pera, kaya hindi mo pinipili ang iisang partner. Ipinapakita lang namin ang mga kwentong gusto mong makita.",
       "en": "Note: the money is pooled, so you don't pick a single partner. We only show you the stories you want to see."
@@ -993,10 +993,6 @@
     "continue_to_step_2": {
       "tl": "Ituloy sa Hakbang 2",
       "en": "Continue to Step 2"
-    },
-    "chapter_script_from_the_official_pmes": {
-      "tl": "Script ng kabanata mula sa opisyal na orientation",
-      "en": "Chapter script from the official orientation"
     },
     "ive_finished_this": {
       "tl": "Tapos ko na ito",
@@ -1189,10 +1185,6 @@
     "well_tell_you_once_its_received": {
       "tl": "Sasabihan ka namin kapag natanggap na.",
       "en": "We'll tell you once it's received."
-    },
-    "how_it_is_confirmed": {
-      "tl": "paano kino-confirm",
-      "en": "how it is confirmed"
     },
     "choose_your_first_jvs": {
       "tl": "Piliin ang unang JVS mo",
@@ -1571,6 +1563,84 @@
           "en": "Compare your options"
         }
       }
+    }
+  },
+  "tbc": {
+    "payment_channel": {
+      "tl": "[Payment channel {n} — SEDPI to confirm]",
+      "en": "[Payment channel {n} — SEDPI to confirm]"
+    },
+    "account_details": {
+      "tl": "[Account name at number — SEDPI to confirm]",
+      "en": "[Account name and number — SEDPI to confirm]"
+    },
+    "payment_confirmation": {
+      "tl": "[Paano kino-confirm ang bayad — SEDPI to confirm]",
+      "en": "[How payment is confirmed — SEDPI to confirm]"
+    },
+    "orientation_script": {
+      "tl": "[Script ng kabanata mula sa opisyal na orientation — SEDPI to confirm]",
+      "en": "[Chapter script from the official orientation — SEDPI to confirm]"
+    },
+    "processing_time": {
+      "tl": "[Processing time — SEDPI to confirm]",
+      "en": "[Processing time — SEDPI to confirm]"
+    },
+    "cutoff": {
+      "tl": "[Cut-off — SEDPI to confirm]",
+      "en": "[Cut-off — SEDPI to confirm]"
+    },
+    "withdrawal_channel": {
+      "tl": "[Withdrawal channel at account — SEDPI to confirm]",
+      "en": "[Withdrawal channel and account — SEDPI to confirm]"
+    },
+    "early_withdrawal": {
+      "tl": "[Early withdrawal rules — SEDPI to confirm]",
+      "en": "[Early withdrawal rules — SEDPI to confirm]"
+    },
+    "actual_dividends": {
+      "tl": "[Aktwal na dividends — SEDPI to confirm]",
+      "en": "[Actual dividends — SEDPI to confirm]"
+    },
+    "historical_average": {
+      "tl": "[Historical average — SEDPI to confirm]",
+      "en": "[Historical average — SEDPI to confirm]"
+    },
+    "impact_areas": {
+      "tl": "[Mga totoong impact area ng KaNegosyo — SEDPI to confirm]",
+      "en": "[KaNegosyo's real impact areas — SEDPI to confirm]"
+    },
+    "audited_reports_link": {
+      "tl": "[Link sa audited reports — SEDPI to confirm]",
+      "en": "[Audited reports link — SEDPI to confirm]"
+    },
+    "transparency_reports_link": {
+      "tl": "[Link sa transparency reports — SEDPI to confirm]",
+      "en": "[Transparency reports link — SEDPI to confirm]"
+    },
+    "kasosyo_online_handoff": {
+      "tl": "[KaSosyo Online handoff — SEDPI to confirm]",
+      "en": "[KaSosyo Online handoff — SEDPI to confirm]"
+    },
+    "messenger_link": {
+      "tl": "[Messenger (m.me) link — SEDPI to confirm]",
+      "en": "[Messenger (m.me) link — SEDPI to confirm]"
+    },
+    "office_hours": {
+      "tl": "[Office hours — SEDPI to confirm]",
+      "en": "[Office hours — SEDPI to confirm]"
+    },
+    "to_check": {
+      "tl": "[To check]",
+      "en": "[To check]"
+    },
+    "pdic_to_check": {
+      "tl": "[PDIC coverage — to check]",
+      "en": "[PDIC coverage — to check]"
+    },
+    "term_to_check": {
+      "tl": "[Term at withdrawal — to check]",
+      "en": "[Term and withdrawal — to check]"
     }
   }
 }

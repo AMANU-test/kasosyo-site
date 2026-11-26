@@ -30,7 +30,7 @@ All colours and fonts are CSS variables in `src/index.css` (`@theme`). The palet
 
 ## Placeholders
 
-Anything SEDPI still has to confirm is shown in `[BRACKETS]`: payment channels, partner stories and photos, impact numbers, return figures, orientation scripts and the full T&C text. To find them all, search the code for `confirm with SEDPI`.
+Anything SEDPI still has to confirm is shown in `[BRACKETS]`: payment channels, partner stories and photos, impact numbers, return figures, orientation scripts and the full T&C text. They all live in the `tbc` group of `content/site.json` and read "[… — SEDPI to confirm]"; search for `SEDPI to confirm`.
 
 ## Language
 

@@ -115,7 +115,7 @@ export default function Landing() {
               <p className="mt-1 text-[14.5px] leading-relaxed text-muted">
                 {t('landing.sedpi_coop_has_been_registered_with')}
               </p>
-              <button onClick={() => toast(t('landing.opens_sedpis_transparency_reports') + ' [link — confirm with SEDPI]')} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-semibold text-teal underline underline-offset-4">
+              <button onClick={() => toast(t('landing.opens_sedpis_transparency_reports') + ' ' + t('tbc.transparency_reports_link'))} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-[14px] font-semibold text-teal underline underline-offset-4">
                 {t('landing.see_the_audited_reports')} <ExternalLink size={14} />
               </button>
             </div>

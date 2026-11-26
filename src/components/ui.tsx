@@ -31,7 +31,7 @@ export function TopBar({ title, back, right }: { title?: ReactNode; back?: strin
       ) : (
         <Wordmark />
       )}
-      <div className="min-w-0 flex-1 truncate text-[15px] font-semibold">{title}</div>
+      <div className="min-w-0 flex-1 line-clamp-2 text-[15px] font-semibold leading-tight">{title}</div>
       <LangToggle />
       {right}
     </header>
@@ -260,7 +260,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
 export function useMessenger() {
   const { toast } = useDemo()
   const { t } = useT()
-  return () => toast(t('ui.on_the_real_site_this_opens') + ' [m.me link — confirm with SEDPI]')
+  return () => toast(t('ui.on_the_real_site_this_opens') + ' ' + t('tbc.messenger_link'))
 }
 
 /** Floating "Chat kay Zion" button for the sign-up wizard. Sits above the sticky bar. */
@@ -272,12 +272,12 @@ export function ChatFab({ bottom = 92 }: { bottom?: number }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="fixed z-30 flex min-h-12 items-center gap-2 rounded-full bg-ink py-1.5 pl-1.5 pr-3.5 text-left text-white shadow-lg"
+        className="fixed z-30 flex min-h-12 items-center gap-2 rounded-full bg-ink py-1.5 pl-1.5 pr-3.5 max-[399px]:pr-1.5 text-left text-white shadow-lg"
         style={{ bottom, right: 'max(12px, calc(50vw - 215px + 12px))' }}
         aria-label={t('ui.questions_chat_with_zion')}
       >
         <span className="grid size-9 place-items-center rounded-full bg-mangga text-ink"><MessageCircle size={18} /></span>
-        <span className="leading-tight">
+        <span className="leading-tight max-[399px]:hidden">
           <span className="block text-[11px] text-white/75">{t('ui.questions')}</span>
           <span className="block text-[13px] font-semibold">{t('ui.chat_with_zion')}</span>
         </span>
@@ -293,7 +293,7 @@ export function ChatFab({ bottom = 92 }: { bottom?: number }) {
           <Button full onClick={() => { openMessenger(); setOpen(false) }}><MessageCircle size={18} /> {t('ui.message_zion')}</Button>
           <Button full variant="ghost" onClick={() => setOpen(false)}>{t('ui.maybe_later')}</Button>
         </div>
-        <p className="mt-2 text-center text-[12px] text-muted">{t('ui.reply_hours')} <TBC>[office hours — confirm with SEDPI]</TBC></p>
+        <p className="mt-2 text-center text-[12px] text-muted">{t('ui.reply_hours')} <TBC>{t('tbc.office_hours')}</TBC></p>
       </Sheet>
     </>
   )

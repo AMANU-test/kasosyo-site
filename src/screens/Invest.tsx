@@ -85,16 +85,16 @@ export default function Invest() {
           <h2 className="mt-6 px-1 text-[17px] font-bold">{t('invest.before_you_decide')}</h2>
           <ul className="mt-2 grid gap-2 pb-6">
             <li className="flex gap-3 rounded-2xl border border-line bg-card p-3.5"><SexyBadge letter="S" /><p className="text-[14px] leading-snug"><b>{t('invest.safe')}:</b> {t('invest.a_cda_registered_co_op_that')}</p></li>
-            <li className="flex gap-3 rounded-2xl border border-line bg-card p-3.5"><SexyBadge letter="E" /><p className="text-[14px] leading-snug"><b>{t('invest.withdrawable')}:</b> {t('invest.after_the_term')}{term ? <>, {t('invest.on')} <b>{addMonths(term)}</b></> : ''}. {t('invest.you_choose_whether_to_continue_or')} <TBC>[early withdrawal — confirm with SEDPI]</TBC></p></li>
+            <li className="flex gap-3 rounded-2xl border border-line bg-card p-3.5"><SexyBadge letter="E" /><p className="text-[14px] leading-snug"><b>{t('invest.withdrawable')}:</b> {t('invest.after_the_term')}{term ? <>, {t('invest.on')} <b>{addMonths(term)}</b></> : ''}. {t('invest.you_choose_whether_to_continue_or')} <TBC>{t('tbc.early_withdrawal')}</TBC></p></li>
             <li className="flex gap-3 rounded-2xl border border-line bg-card p-3.5"><SexyBadge letter="X" /><p className="text-[14px] leading-snug"><b>{t('invest.impact')}:</b> {t('invest.your_money_joins_the_pool_that')}</p></li>
-            <li className="flex items-center gap-3 px-1 pt-1"><SexyBadge letter="Y" size="sm" /><p className="text-[12.5px] leading-snug text-muted">{t('invest.returns')}: <TBC>[historical average — confirm with SEDPI]</TBC> · not guaranteed</p></li>
+            <li className="flex items-center gap-3 px-1 pt-1"><SexyBadge letter="Y" size="sm" /><p className="text-[12.5px] leading-snug text-muted">{t('invest.returns')}: <TBC>{t('tbc.historical_average')}</TBC> · {t('invest.not_guaranteed')}</p></li>
           </ul>
         </section>
       )}
 
       <StickyBar>
         {ready && <p className="mb-2 text-center text-[13px] text-muted">{peso(amount)} · {termLabel(term!, lang)} · {t('invest.ends')} {addMonths(term!)}</p>}
-        <Button full disabled={!ready} onClick={() => { set({ jvs: { goal: goal!, termMonths: term!, amount } }); toast(t('invest.your_jvs_plan_is_saved') + ' [KaSosyo Online handoff — confirm with SEDPI]'); nav('/app') }}>
+        <Button full disabled={!ready} onClick={() => { set({ jvs: { goal: goal!, termMonths: term!, amount } }); toast(t('invest.your_jvs_plan_is_saved') + ' ' + t('tbc.kasosyo_online_handoff')); nav('/app') }}>
           {ready ? <>{t('invest.save_my_jvs_plan')} <ArrowRight size={18} /></> : goal ? t('invest.fix_the_amount') : t('invest.pick_a_goal_first')}
         </Button>
       </StickyBar>

@@ -196,7 +196,7 @@ export function Kwento() {
       </section>
 
       <section className="px-4 pb-8 pt-4">
-        <button onClick={() => toast(t('dashboard.opens_the_audited_financial_statements') + ' [link — confirm with SEDPI]')} className="flex w-full items-center gap-3 rounded-2xl border border-line bg-card p-4 text-left">
+        <button onClick={() => toast(t('dashboard.opens_the_audited_financial_statements') + ' ' + t('tbc.audited_reports_link'))} className="flex w-full items-center gap-3 rounded-2xl border border-line bg-card p-4 text-left">
           <FileText size={20} className="shrink-0 text-teal" />
           <span className="flex-1">
             <span className="block text-[14.5px] font-semibold">Audited financial statements</span>
@@ -249,10 +249,10 @@ export function Maturity() {
           <h1 className="mt-5 text-[26px] font-extrabold leading-tight">{tx(picked.done)}</h1>
           <p className="mt-2 text-[14.5px] text-muted">
             {choice === 'withdraw'
-              ? <>{t('dashboard.we_will_send_your_money')} <TBC>[processing time — confirm with SEDPI]</TBC></>
+              ? <>{t('dashboard.we_will_send_your_money')} <TBC>{t('tbc.processing_time')}</TBC></>
               : <>{t('dashboard.new_term')} {termLabel(term, lang)}, {t('dashboard.ending')} {addMonths(term)}.</>}
           </p>
-          <p className="mt-3 text-[13px] text-muted">{t('dashboard.you_can_change_your_mind_before')} <TBC>[cut-off — confirm]</TBC></p>
+          <p className="mt-3 text-[13px] text-muted">{t('dashboard.you_can_change_your_mind_before')} <TBC>{t('tbc.cutoff')}</TBC></p>
         </div>
         <StickyBar><Button full onClick={() => nav('/app')}>{t('dashboard.back_to_home')}</Button></StickyBar>
       </Screen>
@@ -277,7 +277,7 @@ export function Maturity() {
           <span className="text-muted">Term</span><span>{t('dashboard.1_year_ended_oct_15_2026')}</span>
         </div>
         <div className="mt-1 flex items-baseline justify-between gap-2 text-[12.5px]">
-          <span className="text-muted">{t('dashboard.returns')}</span><TBC>[actual dividends — confirm with SEDPI]</TBC>
+          <span className="text-muted">{t('dashboard.returns')}</span><TBC>{t('tbc.actual_dividends')}</TBC>
         </div>
       </Card>
 
@@ -318,7 +318,7 @@ export function Maturity() {
             ) : (
               <>
                 <p className="text-[14px] font-semibold">{t(`Saan ipapadala ang ${peso(15000)}?`, `Where should we send ${peso(15000)}?`)}</p>
-                <div className="mt-2 rounded-2xl bg-placeholder p-3 font-mono text-[12px] text-muted">[Withdrawal channel & account — confirm with SEDPI]</div>
+                <div className="mt-2 rounded-2xl bg-placeholder p-3 font-mono text-[12px] text-muted">{t('tbc.withdrawal_channel')}</div>
                 <p className="mt-2 text-[12.5px] text-muted">{t('dashboard.no_questions_no_hassle_its_your')}</p>
               </>
             )}
